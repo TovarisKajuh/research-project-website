@@ -52,10 +52,12 @@ const Contact: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-1">Social</h4>
-                <div className="flex gap-4 text-stone-600">
-                  <a href="#" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">Twitter/X</a>
-                  <a href="#" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">LinkedIn</a>
-                  <a href="#" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">Academia.edu</a>
+                <div className="flex flex-wrap gap-4 text-stone-600">
+                  <a href="https://uni-mb.academia.edu/DavidHazemali" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">Academia.edu</a>
+                  <a href="https://www.researchgate.net/profile/David-Hazemali" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">ResearchGate</a>
+                  <a href="https://orcid.org/0000-0001-9776-8224" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">ORCiD</a>
+                  <a href="https://www.webofscience.com/wos/author/record/AAB-6723-2020" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">Web of Science</a>
+                  <a href="https://www.scopus.com/authid/detail.uri?authorId=57200184398" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors underline-offset-4 hover:underline">Scopus</a>
                 </div>
               </div>
             </div>

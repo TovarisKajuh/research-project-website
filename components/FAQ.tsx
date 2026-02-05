@@ -7,18 +7,43 @@ interface FAQItem {
   answer: string;
 }
 
-const faqs: FAQItem[] = [
+interface FAQSubItem {
+  id: string;
+  text: string;
+}
+
+interface ExtendedFAQItem extends FAQItem {
+  subItems?: FAQSubItem[];
+}
+
+const faqs: ExtendedFAQItem[] = [
   {
-    question: "Who is considered an 'Enemy Alien' in this context?",
-    answer: "During WWI, non-naturalized residents from nations at war with the U.S. (specifically Austria-Hungary and Germany) were classified as Enemy Aliens. This legal designation subjected them to registration, surveillance, and potential internment."
+    question: "Project significance",
+    answer: "The project aims to fill a gap in the scholarship on the immigrant experience during World War I, highlighting the challenges, contributions, and legacies of South Slavic Enemy Aliens and their ethnic communities in the U.S. The project also examines the strategies of adaptation and resistance employed by these groups, such as declaring loyalty, demonstrating patriotism, seeking naturalization, changing names, joining organizations, or maintaining identity and traditions."
   },
   {
-    question: "What makes the South Slavic experience unique?",
-    answer: "Many South Slavs (Croats, Serbs, Slovenes) within the Austro-Hungarian empire actually sought independence from the empire. Ironically, they were treated as enemies in the U.S. due to their technical citizenship, despite often supporting the Allied cause."
+    question: "Research objective",
+    answer: "The main objective of the project is to document the impact of enemy Alien status on the South Slavic immigrants and their ethnic communities in the U.S., who faced registration, surveillance, restriction, confiscation, and discrimination by the U.S. government and society after the U.S. declared war on Austria-Hungary on December 7, 1917.",
+    subItems: [
+      { id: "SO1", text: "Case studies of the impact of the World War I Enemy Alien status on Slovenians, Croatians and Serbs and their ethnic communities in the U.S." },
+      { id: "SO2", text: "Comparative analysis of the experiences and narratives of South Slavic ethnic communities in the U.S. in the wake of World War I Enemy Alien regulations" },
+      { id: "SO3", text: "Comparative analysis of the experiences and narratives of South Slavic ethnic communities with the well-documented ones of the German-American community" },
+      { id: "SO4", text: "A digitized database of select personal and community histories of the South Slavs in the U.S. who were affected by Enemy Alien status during World War I" }
+    ]
   },
   {
-    question: "Are the archives accessible to the public?",
-    answer: "Most of the primary sources displayed here are housed in the National Archives. This digital project aims to curate specific collections and make them more accessible to the general public and educators."
+    question: "Methodology",
+    answer: "The project employs various interdisciplinary methods from the humanities and social sciences, with a focus on migration and cultural studies, and historiography. It adopts a case study approach for each of the three ethnic groups, a comparative approach to contrast them with each other and with the German-American community, and a mixed-methods approach to combine qualitative and quantitative data."
+  },
+  {
+    question: "Deliverables",
+    answer: "The research work will produce the following deliverables:",
+    subItems: [
+      { id: "D1", text: "At least 4 research papers published in high-impact Scopus and/or Web of Science Core Collection-indexed journals" },
+      { id: "D2", text: "A digital database with documented case studies of individual and community experiences, available on my project website" },
+      { id: "D3", text: "A workshop on genealogy research at the Department of History, Faculty of Arts, University of Maribor" },
+      { id: "D4", text: "An exhibition on documented case studies of personal and community histories" }
+    ]
   }
 ];
 
@@ -78,9 +103,19 @@ const FAQ: React.FC = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-8 text-stone-400 font-light leading-relaxed max-w-2xl">
-                      {faq.answer}
-                    </p>
+                    <div className="pb-8 text-stone-400 font-light leading-relaxed max-w-2xl">
+                      <p>{faq.answer}</p>
+                      {faq.subItems && (
+                        <ul className="mt-4 space-y-3">
+                          {faq.subItems.map((item) => (
+                            <li key={item.id} className="flex gap-3">
+                              <span className="text-stone-500 font-medium shrink-0">{item.id}:</span>
+                              <span>{item.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
