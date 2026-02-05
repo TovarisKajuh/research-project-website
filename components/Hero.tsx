@@ -50,8 +50,9 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
           className="text-center"
+          style={{ transform: 'translateY(-3rem)' }}
         >
-          <h1 className="organetto-style text-5xl sm:text-6xl text-white mb-2 drop-shadow-lg">
+          <h1 className="organetto-style text-5xl sm:text-6xl text-white mb-2 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
             ADAPTATION
           </h1>
           <p className="organetto-style text-xl sm:text-2xl text-white/90 tracking-widest drop-shadow-lg">
