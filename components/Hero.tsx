@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  return (
-    <section className="relative w-full h-screen overflow-hidden bg-stone-900">
-      {/* 
-        IMAGE PLACEHOLDER:
-        The prompt specifies a huge image placeholder.
-        I'm using a dark, moody placeholder to simulate the "High Contrast" requirement 
-        and allow white text to pop.
-      */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
-        style={{
-           backgroundImage: `url('/images/hero.png')`
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-transparent to-stone-900/30" />
-      </div>
+  const [imageLoaded, setImageLoaded] = useState(false);
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/images/hero.png';
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
+  return (
+    <section className="relative w-full h-screen overflow-visible bg-stone-800">
+      {/* Background placeholder while loading */}
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-700 to-stone-800" />
+
+      {/* Main hero image - no filters */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: imageLoaded ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: imageLoaded ? `url('/images/hero.png')` : 'none',
+        }}
+      />
+
+      {/* Bottom gradient - bleeds into next section (white) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[25%] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.3) 30%, rgba(41, 37, 36, 0.7) 60%, rgb(255, 255, 255) 100%)'
+        }}
+      />
+
+      {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24">
-        {/* Subtext container */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
@@ -38,15 +53,15 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4"
+        className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4 z-20"
       >
-        <span className="text-xs uppercase tracking-widest text-white/70">Scroll to Explore</span>
-        <div className="p-3 border border-white/20 rounded-full backdrop-blur-sm">
-          <ArrowDown className="w-4 h-4 text-white animate-bounce" />
+        <span className="text-xs uppercase tracking-widest text-stone-600">Scroll to Explore</span>
+        <div className="p-3 border border-stone-400/50 rounded-full backdrop-blur-sm">
+          <ArrowDown className="w-4 h-4 text-stone-600 animate-bounce" />
         </div>
       </motion.div>
     </section>
