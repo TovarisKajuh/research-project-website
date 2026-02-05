@@ -14,8 +14,7 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
         style={{
-           // Using a grayscale distinct architectural or historical placeholder
-           backgroundImage: `url('https://picsum.photos/1920/1080?grayscale&blur=2')`
+           backgroundImage: `url('/images/hero.png')`
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-transparent to-stone-900/30" />

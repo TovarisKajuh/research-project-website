@@ -51,11 +51,10 @@ const ResearcherProfile: React.FC = () => {
                 Placeholder for free-floating image (e.g., a cutout person). 
                 I will use a standard image but give it a "cutout" vibe by ensuring no border/shadow box.
              */}
-            <img 
-              src="https://picsum.photos/800/1000?grayscale" 
-              alt="Researcher Portrait" 
-              className="w-full h-full object-cover grayscale contrast-125"
-              style={{ mixBlendMode: 'multiply' }} 
+            <img
+              src="/images/researcher.png"
+              alt="Researcher Portrait"
+              className="w-full h-full object-contain"
             />
             
             {/* Decorative graphical element behind */}
