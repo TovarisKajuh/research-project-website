@@ -158,9 +158,10 @@ const ProjectGallery: React.FC = () => {
           <div className="relative mb-16">
             {/* Dark fog background for this image group */}
             <div
-              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
-                background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(68, 64, 60, 0.15) 0%, rgba(68, 64, 60, 0.08) 40%, transparent 70%)'
+                background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(68, 64, 60, 0.12) 0%, rgba(68, 64, 60, 0.06) 30%, rgba(68, 64, 60, 0.02) 50%, transparent 65%)',
+                filter: 'blur(20px)'
               }}
             />
             <motion.div
@@ -244,9 +245,10 @@ const ProjectGallery: React.FC = () => {
           <div className="relative mb-16">
             {/* Dark fog background for this image group */}
             <div
-              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
-                background: 'radial-gradient(ellipse 85% 75% at 50% 50%, rgba(68, 64, 60, 0.18) 0%, rgba(68, 64, 60, 0.1) 40%, transparent 70%)'
+                background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(68, 64, 60, 0.14) 0%, rgba(68, 64, 60, 0.07) 30%, rgba(68, 64, 60, 0.02) 50%, transparent 65%)',
+                filter: 'blur(20px)'
               }}
             />
             <motion.div
@@ -326,9 +328,10 @@ const ProjectGallery: React.FC = () => {
           <div className="relative">
             {/* Dark fog background for this image group */}
             <div
-              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
-                background: 'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(68, 64, 60, 0.15) 0%, rgba(68, 64, 60, 0.08) 40%, transparent 70%)'
+                background: 'radial-gradient(ellipse 100% 100% at 50% 45%, rgba(68, 64, 60, 0.12) 0%, rgba(68, 64, 60, 0.06) 30%, rgba(68, 64, 60, 0.02) 50%, transparent 65%)',
+                filter: 'blur(20px)'
               }}
             />
             <motion.div

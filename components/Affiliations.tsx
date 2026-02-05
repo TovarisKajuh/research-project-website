@@ -70,7 +70,7 @@ const Affiliations: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
-              className="w-48 h-32 flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              className={`${index === 0 ? 'w-96 h-64' : 'w-48 h-32'} flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer`}
             >
               <img
                 src={logo.src}

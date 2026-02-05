@@ -119,7 +119,6 @@ const ResearcherProfile: React.FC = () => {
             </div>
 
             {/* Decorative graphical element behind */}
-            <div className="absolute -z-10 top-12 -right-12 w-full h-full border border-stone-300 opacity-50" />
             <div className="absolute -z-10 -bottom-6 -left-6 w-32 h-32 bg-stone-200/50 rounded-full blur-2xl" />
           </motion.div>
         </div>
