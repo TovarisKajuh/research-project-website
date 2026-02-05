@@ -58,7 +58,7 @@ const Affiliations: React.FC = () => {
           whose funding enables groundbreaking historical scholarship.
         </motion.p>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16">
           {logos.map((logo, index) => (
             <motion.a
               key={index}
@@ -70,7 +70,11 @@ const Affiliations: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
               whileHover={{ scale: 1.08, y: -4 }}
-              className="w-44 h-28 md:w-52 md:h-32 flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-300 cursor-pointer group"
+              className={`flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-300 cursor-pointer group ${
+                index === 0
+                  ? 'w-40 h-24 md:w-44 md:h-28'
+                  : 'w-44 h-28 md:w-52 md:h-32'
+              }`}
             >
               <img
                 src={logo.src}

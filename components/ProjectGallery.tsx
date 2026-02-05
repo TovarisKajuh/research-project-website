@@ -503,21 +503,23 @@ const ProjectGallery: React.FC = () => {
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, scale: 0.9, rotate: 2 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-5xl max-h-[85vh] w-full bg-white p-4 shadow-2xl"
+              className="relative max-w-5xl max-h-[85vh] w-full bg-white p-4 shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].alt}
-                className="w-full h-full object-contain"
-              />
+              <div className="w-full h-full max-h-[calc(85vh-8rem)] overflow-hidden">
+                <img
+                  src={galleryImages[selectedImage].src}
+                  alt={galleryImages[selectedImage].alt}
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent"
+                className="p-6 bg-stone-100"
               >
-                <p className="text-white text-lg font-light">{galleryImages[selectedImage].caption}</p>
+                <p className="text-stone-800 text-lg font-light">{galleryImages[selectedImage].caption}</p>
               </motion.div>
             </motion.div>
           </motion.div>

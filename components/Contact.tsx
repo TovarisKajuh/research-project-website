@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-1">Email</h4>
-                <a href="mailto:research@example.edu" className="text-stone-600 hover:text-stone-900 transition-colors underline-offset-4 hover:underline">alex.kovac@university.edu</a>
+                <a href="mailto:david.hazemali@um.si" className="text-stone-600 hover:text-stone-900 transition-colors underline-offset-4 hover:underline">david.hazemali@um.si</a>
               </div>
             </div>
 
@@ -40,8 +40,8 @@ const Contact: React.FC = () => {
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-widest text-stone-900 mb-1">Office</h4>
                 <p className="text-stone-600">
-                  Department of History, Humanities Bldg 404<br />
-                  123 University Ave, Chicago, IL
+                  Koroška cesta 160<br />
+                  2000, Maribor, Slovenia
                 </p>
               </div>
             </div>
