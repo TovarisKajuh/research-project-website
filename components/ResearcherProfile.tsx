@@ -6,8 +6,10 @@ const ResearcherProfile: React.FC = () => {
   const [bioExpanded, setBioExpanded] = useState(false);
 
   return (
-    <section id="researcher" className="py-24 md:py-32 bg-sepia-50 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section id="researcher" className="relative pt-40 pb-24 md:pt-48 md:pb-32 bg-sepia-50">
+      {/* Grain transition at top - coming from dark gallery section */}
+      <div className="grain-transition-researcher-top" />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-20">
 
         {/* Text Content */}
         <div className="order-2 md:order-1">
@@ -88,18 +90,20 @@ const ResearcherProfile: React.FC = () => {
             transition={{ duration: 1 }}
             className="relative w-full max-w-[460px] aspect-[3/4]"
           >
-            {/* Main image with bottom fade gradient overlay */}
+            {/* Main image with strong brightness filter at bottom */}
             <div className="relative w-full h-full">
               <img
                 src="/images/researcher.png"
                 alt="Dr. David Hazemali"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain researcher-image-mask"
               />
-              {/* White gradient fade at bottom for smooth transition */}
+              {/* Strong brightness filter at bottom 5% to hide sharp edge */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
+                className="absolute bottom-0 left-0 right-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.3) 30%, rgba(249, 248, 246, 0.7) 60%, rgba(249, 248, 246, 0.95) 85%, rgb(249, 248, 246) 100%)'
+                  height: '12%',
+                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.4) 30%, rgba(249, 248, 246, 0.85) 60%, rgb(249, 248, 246) 100%)',
+                  filter: 'brightness(1.3)'
                 }}
               />
             </div>

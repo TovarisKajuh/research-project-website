@@ -100,13 +100,14 @@ const ProjectGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="relative py-32 overflow-hidden w-full bg-gradient-to-b from-white via-sepia-50 to-white">
-      {/* Background texture */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-      }} />
+    <section id="gallery" className="relative pt-48 pb-56 overflow-hidden w-full bg-stone-800 film-grain">
+      {/* Grain transition at top - coming from Hero */}
+      <div className="grain-transition-top" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      {/* Grain transition at bottom - going to Researcher section */}
+      <div className="grain-transition-bottom" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.h3
@@ -114,7 +115,7 @@ const ProjectGallery: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-display font-black text-stone-900 leading-tight uppercase tracking-wide"
+            className="text-4xl md:text-5xl font-display font-black text-stone-100 leading-tight uppercase tracking-wide"
           >
             Fragments of Displacement
           </motion.h3>
@@ -125,14 +126,14 @@ const ProjectGallery: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-6"
           >
-            <DividerOrnament className="w-48 h-8 mx-auto text-stone-400" />
+            <DividerOrnament className="w-48 h-8 mx-auto text-stone-500" />
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="mt-6 text-stone-600 font-light text-lg leading-relaxed max-w-2xl mx-auto italic"
+            className="mt-6 text-stone-400 font-light text-lg leading-relaxed max-w-2xl mx-auto italic"
           >
             A visual journey through the lives of South Slavic immigrants—their hopes, their struggles, and their enduring legacy in America.
           </motion.p>
@@ -149,7 +150,7 @@ const ProjectGallery: React.FC = () => {
               className="flex justify-center items-start gap-8"
             >
               {/* Left ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 mt-8 flex-shrink-0" />
+              <CornerOrnament className="w-16 h-16 text-stone-500 mt-8 flex-shrink-0" />
 
               {/* Photo group 1 */}
               <div className="relative">
@@ -161,7 +162,7 @@ const ProjectGallery: React.FC = () => {
                   onClick={() => openLightbox(0)}
                   size="large"
                 />
-                <FlowerOrnament className="absolute -bottom-4 -right-4 w-8 h-8 text-stone-400" />
+                <FlowerOrnament className="absolute -bottom-4 -right-4 w-8 h-8 text-stone-500" />
               </div>
 
               {/* Photo group 2 - stacked */}
@@ -189,7 +190,7 @@ const ProjectGallery: React.FC = () => {
               </div>
 
               {/* Right ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 mt-8 flex-shrink-0" flip />
+              <CornerOrnament className="w-16 h-16 text-stone-500 mt-8 flex-shrink-0" flip />
             </motion.div>
 
             {/* Story text for first row */}
@@ -200,10 +201,10 @@ const ProjectGallery: React.FC = () => {
               transition={{ delay: 0.4 }}
               className="max-w-xl mx-auto mt-12 text-center"
             >
-              <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+              <h4 className="text-lg font-display font-bold text-stone-200 uppercase tracking-wide mb-3">
                 {storyParagraphs[0].title}
               </h4>
-              <p className="text-stone-600 font-light leading-relaxed">
+              <p className="text-stone-400 font-light leading-relaxed">
                 {storyParagraphs[0].text}
               </p>
             </motion.div>
@@ -216,7 +217,7 @@ const ProjectGallery: React.FC = () => {
             viewport={{ once: true }}
             className="flex justify-center my-12"
           >
-            <DividerOrnament className="w-64 h-8 text-stone-300" />
+            <DividerOrnament className="w-64 h-8 text-stone-500" />
           </motion.div>
 
           {/* Album Page 2 - Middle Row */}
@@ -241,7 +242,7 @@ const ProjectGallery: React.FC = () => {
 
               {/* Central large photo */}
               <div className="relative mx-4">
-                <div className="absolute -inset-4 border border-stone-300 opacity-30" style={{ transform: 'rotate(-1deg)' }} />
+                <div className="absolute -inset-4 border border-stone-500 opacity-30" style={{ transform: 'rotate(-1deg)' }} />
                 <AlbumPhoto
                   src={galleryImages[4].src}
                   alt={galleryImages[4].alt}
@@ -250,8 +251,8 @@ const ProjectGallery: React.FC = () => {
                   onClick={() => openLightbox(4)}
                   size="xlarge"
                 />
-                <FlowerOrnament className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-400" />
-                <FlowerOrnament className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-400" />
+                <FlowerOrnament className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-500" />
+                <FlowerOrnament className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-500" />
               </div>
 
               {/* Photo group 5 */}
@@ -275,10 +276,10 @@ const ProjectGallery: React.FC = () => {
               transition={{ delay: 0.4 }}
               className="max-w-xl mx-auto mt-12 text-center"
             >
-              <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+              <h4 className="text-lg font-display font-bold text-stone-200 uppercase tracking-wide mb-3">
                 {storyParagraphs[1].title}
               </h4>
-              <p className="text-stone-600 font-light leading-relaxed">
+              <p className="text-stone-400 font-light leading-relaxed">
                 {storyParagraphs[1].text}
               </p>
             </motion.div>
@@ -291,7 +292,7 @@ const ProjectGallery: React.FC = () => {
             viewport={{ once: true }}
             className="flex justify-center my-12"
           >
-            <DividerOrnament className="w-64 h-8 text-stone-300" />
+            <DividerOrnament className="w-64 h-8 text-stone-500" />
           </motion.div>
 
           {/* Album Page 3 - Bottom Row */}
@@ -303,7 +304,7 @@ const ProjectGallery: React.FC = () => {
               className="flex justify-center items-end gap-8"
             >
               {/* Left ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 rotate-90" />
+              <CornerOrnament className="w-16 h-16 text-stone-500 mb-8 flex-shrink-0 rotate-90" />
 
               {/* Photo group 6 */}
               <div className="relative mb-8">
@@ -327,11 +328,11 @@ const ProjectGallery: React.FC = () => {
                   onClick={() => openLightbox(7)}
                   size="large"
                 />
-                <FlowerOrnament className="absolute -bottom-4 -left-4 w-8 h-8 text-stone-400" />
+                <FlowerOrnament className="absolute -bottom-4 -left-4 w-8 h-8 text-stone-500" />
               </div>
 
               {/* Right ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 -rotate-90" flip />
+              <CornerOrnament className="w-16 h-16 text-stone-500 mb-8 flex-shrink-0 -rotate-90" flip />
             </motion.div>
 
             {/* Final story texts */}
@@ -343,10 +344,10 @@ const ProjectGallery: React.FC = () => {
                 transition={{ delay: 0.3 }}
                 className="text-center"
               >
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+                <h4 className="text-lg font-display font-bold text-stone-200 uppercase tracking-wide mb-3">
                   {storyParagraphs[2].title}
                 </h4>
-                <p className="text-stone-600 font-light leading-relaxed">
+                <p className="text-stone-400 font-light leading-relaxed">
                   {storyParagraphs[2].text}
                 </p>
               </motion.div>
@@ -357,10 +358,10 @@ const ProjectGallery: React.FC = () => {
                 transition={{ delay: 0.5 }}
                 className="text-center"
               >
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+                <h4 className="text-lg font-display font-bold text-stone-200 uppercase tracking-wide mb-3">
                   {storyParagraphs[3].title}
                 </h4>
-                <p className="text-stone-600 font-light leading-relaxed">
+                <p className="text-stone-400 font-light leading-relaxed">
                   {storyParagraphs[3].text}
                 </p>
               </motion.div>
@@ -374,7 +375,7 @@ const ProjectGallery: React.FC = () => {
             viewport={{ once: true }}
             className="flex justify-center mt-16"
           >
-            <DividerOrnament className="w-48 h-8 text-stone-400" />
+            <DividerOrnament className="w-48 h-8 text-stone-500" />
           </motion.div>
         </div>
 
@@ -423,17 +424,17 @@ const ProjectGallery: React.FC = () => {
 
               {/* Story text */}
               <div className="text-center px-4">
-                <FlowerOrnament className="w-8 h-8 mx-auto text-stone-400 mb-3" />
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-2">
+                <FlowerOrnament className="w-8 h-8 mx-auto text-stone-500 mb-3" />
+                <h4 className="text-lg font-display font-bold text-stone-200 uppercase tracking-wide mb-2">
                   {story.title}
                 </h4>
-                <p className="text-stone-600 font-light text-sm leading-relaxed">
+                <p className="text-stone-400 font-light text-sm leading-relaxed">
                   {story.text}
                 </p>
               </div>
 
               {storyIndex < storyParagraphs.length - 1 && (
-                <DividerOrnament className="w-32 h-6 mx-auto text-stone-300 mt-8" />
+                <DividerOrnament className="w-32 h-6 mx-auto text-stone-500 mt-8" />
               )}
             </motion.div>
           ))}
@@ -499,10 +500,10 @@ const AlbumPhoto: React.FC<{
   size: 'small' | 'medium' | 'large' | 'xlarge';
 }> = ({ src, alt, rotation, delay, onClick, size }) => {
   const sizeClasses = {
-    small: 'w-36 h-44',
-    medium: 'w-48 h-56',
-    large: 'w-56 h-64',
-    xlarge: 'w-72 h-80',
+    small: 'w-[216px] h-[264px]',
+    medium: 'w-[288px] h-[336px]',
+    large: 'w-[336px] h-96',
+    xlarge: 'w-[432px] h-[480px]',
   };
 
   return (
