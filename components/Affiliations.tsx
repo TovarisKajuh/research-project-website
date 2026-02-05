@@ -21,8 +21,22 @@ const logos = [
 
 const Affiliations: React.FC = () => {
   return (
-    <section id="affiliations" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+    <section id="affiliations" className="relative py-24 bg-white overflow-hidden">
+      {/* Top gradient for smooth transition from previous section */}
+      <div
+        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, transparent 100%)'
+        }}
+      />
+      {/* Bottom gradient for smooth transition to next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(245, 245, 244, 0.5) 50%, rgba(245, 245, 244, 1) 100%)'
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-20">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -100,13 +100,27 @@ const ProjectGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="relative py-32 overflow-hidden w-full bg-gradient-to-b from-white via-sepia-50 to-white">
+    <section id="gallery" className="relative pt-16 pb-32 overflow-hidden w-full bg-sepia-50">
+      {/* Top gradient for smooth transition from Hero */}
+      <div
+        className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(249, 248, 246, 1) 0%, rgba(249, 248, 246, 0) 100%)'
+        }}
+      />
+      {/* Bottom gradient for smooth transition to next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.5) 50%, rgba(249, 248, 246, 1) 100%)'
+        }}
+      />
       {/* Background texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }} />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.h3
@@ -142,11 +156,18 @@ const ProjectGallery: React.FC = () => {
         <div className="hidden md:block">
           {/* Album Page 1 - Top Row */}
           <div className="relative mb-16">
+            {/* Dark fog background for this image group */}
+            <div
+              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              style={{
+                background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(68, 64, 60, 0.15) 0%, rgba(68, 64, 60, 0.08) 40%, transparent 70%)'
+              }}
+            />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center items-start gap-8"
+              className="flex justify-center items-start gap-8 relative z-10"
             >
               {/* Left ornament */}
               <CornerOrnament className="w-16 h-16 text-stone-400 mt-8 flex-shrink-0" />
@@ -221,11 +242,18 @@ const ProjectGallery: React.FC = () => {
 
           {/* Album Page 2 - Middle Row */}
           <div className="relative mb-16">
+            {/* Dark fog background for this image group */}
+            <div
+              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              style={{
+                background: 'radial-gradient(ellipse 85% 75% at 50% 50%, rgba(68, 64, 60, 0.18) 0%, rgba(68, 64, 60, 0.1) 40%, transparent 70%)'
+              }}
+            />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center items-center gap-6"
+              className="flex justify-center items-center gap-6 relative z-10"
             >
               {/* Photo group 4 */}
               <div className="relative">
@@ -296,11 +324,18 @@ const ProjectGallery: React.FC = () => {
 
           {/* Album Page 3 - Bottom Row */}
           <div className="relative">
+            {/* Dark fog background for this image group */}
+            <div
+              className="absolute inset-0 -inset-x-12 -inset-y-8 pointer-events-none rounded-3xl"
+              style={{
+                background: 'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(68, 64, 60, 0.15) 0%, rgba(68, 64, 60, 0.08) 40%, transparent 70%)'
+              }}
+            />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center items-end gap-8"
+              className="flex justify-center items-end gap-8 relative z-10"
             >
               {/* Left ornament */}
               <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 rotate-90" />
@@ -498,11 +533,12 @@ const AlbumPhoto: React.FC<{
   onClick: () => void;
   size: 'small' | 'medium' | 'large' | 'xlarge';
 }> = ({ src, alt, rotation, delay, onClick, size }) => {
+  // Desktop sizes increased by 50% (mobile stays same via responsive classes)
   const sizeClasses = {
-    small: 'w-36 h-44',
-    medium: 'w-48 h-56',
-    large: 'w-56 h-64',
-    xlarge: 'w-72 h-80',
+    small: 'w-36 h-44 md:w-[216px] md:h-[264px]',
+    medium: 'w-48 h-56 md:w-[288px] md:h-[336px]',
+    large: 'w-56 h-64 md:w-[336px] md:h-[384px]',
+    xlarge: 'w-72 h-80 md:w-[432px] md:h-[480px]',
   };
 
   return (

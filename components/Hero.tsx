@@ -27,11 +27,18 @@ const Hero: React.FC = () => {
         }}
       />
 
-      {/* Bottom gradient - bleeds into next section (white) */}
+      {/* Bottom gradient - smooth bleed into next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[25%] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.3) 30%, rgba(41, 37, 36, 0.7) 60%, rgb(255, 255, 255) 100%)'
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.2) 20%, rgba(41, 37, 36, 0.5) 40%, rgba(41, 37, 36, 0.7) 60%, rgba(249, 248, 246, 0.8) 80%, rgb(249, 248, 246) 100%)'
+        }}
+      />
+      {/* Extended fade overlay for seamless transition */}
+      <div
+        className="absolute -bottom-32 left-0 right-0 h-32 pointer-events-none z-20"
+        style={{
+          background: 'linear-gradient(to bottom, rgb(249, 248, 246) 0%, rgba(249, 248, 246, 0) 100%)'
         }}
       />
 
