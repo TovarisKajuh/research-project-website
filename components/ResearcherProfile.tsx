@@ -17,9 +17,6 @@ const ResearcherProfile: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-stone-500 uppercase tracking-widest text-xs font-bold mb-6 block">
-              Principal Investigator
-            </span>
             <h3 className="text-3xl md:text-4xl font-display font-black text-stone-900 uppercase tracking-wide mb-8">
               Dr. David Hazemali
             </h3>
@@ -82,20 +79,30 @@ const ResearcherProfile: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Image - Free Floating without background */}
+        {/* Image - Free Floating without background, 15% larger with bottom fade */}
         <div className="order-1 md:order-2 flex justify-center md:justify-end relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative w-full max-w-md aspect-[3/4]"
+            className="relative w-full max-w-[460px] aspect-[3/4]"
           >
-            <img
-              src="/images/researcher.png"
-              alt="Dr. David Hazemali"
-              className="w-full h-full object-contain"
-            />
+            {/* Main image with bottom fade gradient overlay */}
+            <div className="relative w-full h-full">
+              <img
+                src="/images/researcher.png"
+                alt="Dr. David Hazemali"
+                className="w-full h-full object-contain"
+              />
+              {/* White gradient fade at bottom for smooth transition */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.3) 30%, rgba(249, 248, 246, 0.7) 60%, rgba(249, 248, 246, 0.95) 85%, rgb(249, 248, 246) 100%)'
+                }}
+              />
+            </div>
 
             {/* Decorative graphical element behind */}
             <div className="absolute -z-10 top-12 -right-12 w-full h-full border border-stone-300 opacity-50" />
