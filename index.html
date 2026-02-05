@@ -34,6 +34,9 @@
       }
     </script>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -45,6 +48,20 @@
         font-weight: 900;
         letter-spacing: 0.15em;
         text-transform: uppercase;
+      }
+      /* Subtle selection color */
+      ::selection {
+        background-color: #44403c;
+        color: #fff;
+      }
+      /* Smooth image loading */
+      img {
+        transition: opacity 0.3s ease;
+      }
+      /* Subtle focus states */
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid #78716c;
+        outline-offset: 2px;
       }
     </style>
   <script type="importmap">

@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+
+// Small decorative divider
+const SmallDivider: React.FC = () => (
+  <div className="flex items-center gap-3 my-4">
+    <div className="h-px w-8 bg-stone-300" />
+    <div className="w-1.5 h-1.5 bg-stone-400 rotate-45" />
+    <div className="h-px w-8 bg-stone-300" />
+  </div>
+);
 
 const ResearcherProfile: React.FC = () => {
   const [bioExpanded, setBioExpanded] = useState(false);
 
   return (
-    <section id="researcher" className="relative py-24 md:py-32 bg-sepia-50 overflow-hidden">
+    <section id="researcher" className="relative py-12 md:py-16 bg-sepia-50 overflow-hidden">
       {/* Top gradient for smooth transition from previous section */}
       <div
-        className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, rgba(249, 248, 246, 1) 0%, transparent 100%)'
         }}
       />
       {/* Bottom gradient for smooth transition to next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 1) 100%)'
         }}
@@ -31,10 +40,12 @@ const ResearcherProfile: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl md:text-4xl font-display font-black text-stone-900 uppercase tracking-wide mb-8">
+            <h3 className="text-3xl md:text-4xl font-display font-black text-stone-900 uppercase tracking-wide mb-2">
               Dr. David Hazemali
             </h3>
-            <div className="space-y-6 text-stone-700 font-light text-lg leading-relaxed">
+            <p className="text-sm text-stone-500 uppercase tracking-widest mb-4">Lead Researcher & Historian</p>
+            <SmallDivider />
+            <div className="space-y-5 text-stone-700 font-light text-lg leading-relaxed">
               <p>
                 Dr. Hazemali specializes in the intersection of migration history and wartime policy in the early 20th century. His work uncovers the silenced narratives of Austro-Hungarian immigrants who found themselves categorized as "Enemy Aliens" overnight.
               </p>
@@ -43,17 +54,15 @@ const ResearcherProfile: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-8">
               <button
                 onClick={() => setBioExpanded(!bioExpanded)}
-                className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-stone-900 hover:text-stone-600 transition-colors"
+                className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-stone-900 hover:text-stone-600 transition-all duration-300"
               >
                 {bioExpanded ? 'Close Bio' : 'Read Full Bio'}
-                {bioExpanded ? (
-                  <ChevronUp className="w-4 h-4" />
-                ) : (
+                <span className={`transition-transform duration-300 ${bioExpanded ? 'rotate-180' : ''}`}>
                   <ChevronDown className="w-4 h-4" />
-                )}
+                </span>
               </button>
             </div>
 

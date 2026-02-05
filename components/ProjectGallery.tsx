@@ -100,17 +100,17 @@ const ProjectGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="relative pt-16 pb-32 overflow-hidden w-full bg-sepia-50">
+    <section id="gallery" className="relative pt-16 pb-12 overflow-hidden w-full bg-sepia-50">
       {/* Top gradient for smooth transition from Hero */}
       <div
-        className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, rgba(249, 248, 246, 1) 0%, rgba(249, 248, 246, 0) 100%)'
         }}
       />
       {/* Bottom gradient for smooth transition to next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.5) 50%, rgba(249, 248, 246, 1) 100%)'
         }}
@@ -410,7 +410,7 @@ const ProjectGallery: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-16"
+            className="flex justify-center mt-10"
           >
             <DividerOrnament className="w-48 h-8 text-stone-400" />
           </motion.div>

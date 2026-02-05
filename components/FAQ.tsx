@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -30,23 +30,23 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="relative py-24 bg-stone-900 text-stone-100 overflow-hidden">
+    <section id="faq" className="relative py-16 bg-stone-900 text-stone-100 overflow-hidden">
       {/* Top gradient for smooth transition from previous section */}
       <div
-        className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, rgba(245, 245, 244, 1) 0%, rgba(28, 25, 23, 0.3) 40%, rgba(28, 25, 23, 1) 100%)'
         }}
       />
       {/* Bottom gradient for smooth transition to next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.8) 50%, rgba(242, 239, 235, 1) 100%)'
         }}
       />
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-20">
-        <div className="mb-16 text-center md:text-left">
+        <div className="mb-10 text-center md:text-left">
            <span className="text-stone-500 uppercase tracking-widest text-xs font-bold mb-4 block">
             Information
           </span>
@@ -60,13 +60,13 @@ const FAQ: React.FC = () => {
             <div key={index} className="border-b border-stone-800">
               <button
                 onClick={() => toggleIndex(index)}
-                className="w-full py-6 flex justify-between items-center text-left focus:outline-none group"
+                className="w-full py-5 flex justify-between items-center text-left focus:outline-none group"
               >
                 <span className="text-lg md:text-xl font-light group-hover:text-stone-300 transition-colors">
                   {faq.question}
                 </span>
-                <span className="ml-4 text-stone-500 group-hover:text-white transition-colors">
-                  {activeIndex === index ? <Minus size={20} /> : <Plus size={20} />}
+                <span className={`ml-4 transition-all duration-300 ${activeIndex === index ? 'text-white rotate-45' : 'text-stone-500 group-hover:text-white'}`}>
+                  <Plus size={20} />
                 </span>
               </button>
               <AnimatePresence>

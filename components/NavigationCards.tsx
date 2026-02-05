@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, History, Database } from 'lucide-react';
 
 interface CardData {
   title: string;
   description: string;
   href: string;
-  icon: React.ReactNode;
 }
 
 const cards: CardData[] = [
@@ -14,19 +12,16 @@ const cards: CardData[] = [
     title: 'Follow the Research',
     description: 'Track ongoing discoveries and methodologies in our investigation of enemy alien policies.',
     href: '#/research',
-    icon: <BookOpen className="w-8 h-8" />,
   },
   {
     title: 'Discover the History',
     description: 'Explore the historical context and untold stories of South Slavic immigrants during WWI.',
     href: '#/history',
-    icon: <History className="w-8 h-8" />,
   },
   {
     title: 'Explore the Database',
     description: 'Search through our comprehensive archive of documents, photographs, and records.',
     href: '#/database',
-    icon: <Database className="w-8 h-8" />,
   },
 ];
 
@@ -34,17 +29,17 @@ const NavigationCards: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-24 bg-stone-100 overflow-hidden">
+    <section className="relative py-12 bg-stone-100 overflow-hidden">
       {/* Top gradient for smooth transition from previous section */}
       <div
-        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-16 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, rgba(245, 245, 244, 1) 0%, transparent 100%)'
         }}
       />
       {/* Bottom gradient for smooth transition to next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(245, 245, 244, 1) 100%)'
         }}
@@ -54,7 +49,7 @@ const NavigationCards: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="text-stone-500 uppercase tracking-widest text-xs font-bold mb-4 block">
             Explore Further
@@ -136,11 +131,11 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.15, duration: 0.6 }}
+      transition={{ delay: index * 0.12, duration: 0.5, ease: "easeOut" }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onMouseMove={handleMouseMove}
-      className={`relative block p-8 bg-white border border-stone-200 overflow-hidden transition-all duration-500 ${
+      className={`relative block p-8 bg-white/60 backdrop-blur-md border border-white/40 rounded-lg overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:bg-white/80 ${
         anyHovered && !isHovered ? 'opacity-40 scale-[0.98]' : 'opacity-100'
       }`}
       style={{
@@ -170,10 +165,6 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
       )}
 
       <div className="relative z-20">
-        <div className={`mb-6 text-stone-400 transition-colors duration-300 ${isHovered ? 'text-stone-900' : ''}`}>
-          {card.icon}
-        </div>
-
         <h4 className="text-xl font-display font-bold text-stone-900 uppercase tracking-wide mb-4">
           {card.title}
         </h4>
@@ -197,7 +188,7 @@ const NavigationCard: React.FC<NavigationCardProps> = ({
 
       {/* Border highlight on hover */}
       <motion.div
-        className="absolute inset-0 border-2 border-stone-900 pointer-events-none"
+        className="absolute inset-0 border-2 border-stone-800/50 rounded-lg pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}

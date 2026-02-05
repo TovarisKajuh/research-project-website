@@ -52,8 +52,13 @@ const App: React.FC = () => {
       </main>
 
       {/* Simple Footer */}
-      <footer className="w-full py-8 text-center text-xs text-stone-500 uppercase tracking-widest border-t border-stone-200">
-        &copy; {new Date().getFullYear()} Enemy Aliens Research Project. All Rights Reserved.
+      <footer className="w-full py-10 text-center border-t border-stone-200 bg-sepia-50">
+        <p className="text-xs text-stone-400 uppercase tracking-widest mb-2">
+          &copy; {new Date().getFullYear()} Enemy Aliens Research Project
+        </p>
+        <p className="text-[10px] text-stone-400 tracking-wide">
+          A scholarly initiative by the University of Maribor
+        </p>
       </footer>
     </div>
   );

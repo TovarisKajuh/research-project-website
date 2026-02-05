@@ -41,9 +41,10 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-xs font-semibold tracking-widest uppercase hover:opacity-60 transition-opacity ${scrolled ? 'text-stone-800' : 'text-stone-100'}`}
+              className={`text-xs font-semibold tracking-widest uppercase relative transition-all duration-300 hover:-translate-y-0.5 ${scrolled ? 'text-stone-800 hover:text-stone-600' : 'text-stone-100 hover:text-white'}`}
             >
               {link.name}
+              <span className={`absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${scrolled ? 'bg-stone-800' : 'bg-white'}`} />
             </a>
           ))}
         </div>

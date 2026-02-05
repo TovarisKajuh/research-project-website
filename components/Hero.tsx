@@ -50,7 +50,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           className="max-w-4xl"
         >
-          <div className="h-1 w-24 bg-white/50 backdrop-blur mb-6" />
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="h-0.5 w-24 bg-gradient-to-r from-white/80 to-white/20 mb-6"
+          />
           <h2 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-light text-stone-100 font-sans tracking-wide">
             South Slavic Enemy Aliens from <br className="hidden md:block" />
             <span className="font-semibold text-white">Austria-Hungary</span> in the U.S. <br className="hidden md:block" />
@@ -61,14 +66,15 @@ const Hero: React.FC = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4 z-20"
+        className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4 z-20 group cursor-pointer"
+        onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <span className="text-xs uppercase tracking-widest text-stone-600">Scroll to Explore</span>
-        <div className="p-3 border border-stone-400/50 rounded-full backdrop-blur-sm">
-          <ArrowDown className="w-4 h-4 text-stone-600 animate-bounce" />
+        <span className="text-xs uppercase tracking-widest text-stone-600 group-hover:text-stone-800 transition-colors">Scroll to Explore</span>
+        <div className="p-3 border border-stone-400/50 rounded-full backdrop-blur-sm group-hover:border-stone-600 group-hover:bg-white/20 transition-all duration-300">
+          <ArrowDown className="w-4 h-4 text-stone-600 animate-bounce group-hover:text-stone-800" />
         </div>
       </motion.div>
     </section>
