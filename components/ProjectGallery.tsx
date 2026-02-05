@@ -9,25 +9,26 @@ const galleryImages = [
   { src: '/images/content4.png', alt: 'Detail view', caption: 'Personal artifacts and correspondence' },
   { src: '/images/content5.jpg', alt: 'Ellis Island Emigration', caption: 'Emigrants at Ellis Island processing center' },
   { src: '/images/content6.avif', alt: 'Immigration Processing', caption: 'Immigration officials processing new arrivals' },
-  { src: '/images/bottom2.png', alt: 'South Slavic Immigrants', caption: 'South Slavic immigrants in America', noBorder: true },
+  { src: '/images/content7.jpg', alt: 'Historical Research', caption: 'Archival research and document preservation' },
+  { src: '/images/content8.webp', alt: 'Slavic Immigrant Family', caption: 'A Slavic immigrant family in America' },
 ];
 
 const storyParagraphs = [
   {
     title: "Leaving the Old World",
-    text: "They came from the rugged mountains of Slovenia, the fertile plains of Croatia, and the small villages of Serbia—all regions within the vast Austro-Hungarian Empire. Driven by poverty, limited opportunities, and the pull of letters from relatives who had already crossed the ocean, they embarked on a journey that would change their lives forever. Many followed a pattern of chain migration, joining family members or fellow villagers who had established footholds in America. After weeks at sea, they caught their first glimpse of the Statue of Liberty before entering the crowded halls of Ellis Island, where a new chapter awaited."
+    text: "They came from the hills of Slovenia, the farms of Croatia, the villages of Serbia. Carrying little more than hope and a few cherished photographs, thousands of South Slavic families boarded steamships bound for America in the early 1900s, seeking prosperity in a land they had only heard of in letters from those who had gone before."
   },
   {
     title: "A New Beginning",
-    text: "At Ellis Island, they faced medical inspections, legal questioning, and immigration officers who often struggled to spell their unfamiliar names. Yet they persevered. Once cleared, they dispersed across an industrializing America hungry for labor. Many headed to the coal mines of Pennsylvania, the steel mills of Ohio, or the sprawling stockyards of Chicago. They took the hardest, most dangerous jobs—work that native-born Americans often refused—and slowly built new lives. In boarding houses and ethnic neighborhoods, they recreated fragments of home: the foods, the songs, the language, and the religious traditions that anchored them in an unfamiliar land."
+    text: "Ellis Island greeted them with long lines, medical inspections, and immigration officers who often misspelled their names. Yet they persevered. They settled in mining towns of Pennsylvania, steel mills of Ohio, and stockyards of Chicago—building new lives while clinging to the customs, foods, and songs of their homeland."
   },
   {
     title: "The Shadow of War",
-    text: "When war erupted in Europe in the summer of 1914, the world these immigrants had left behind was thrown into chaos. Yet for those in America, daily life continued—until April 1917, when the United States entered the conflict. Overnight, immigrants from the Austro-Hungarian Empire found themselves under suspicion. In December 1917, President Wilson's proclamation classified them as \"enemy aliens,\" subjecting them to strict regulations: registration requirements, travel restrictions, and prohibitions on possessing firearms or living near military installations. Though many had fled the Empire seeking freedom, they were now regarded as potential threats in the very country they had hoped to call home."
+    text: "When war erupted in Europe in 1914, their world changed overnight. Though many had fled the Austro-Hungarian Empire seeking freedom, they were now viewed with suspicion. By 1917, they became 'Enemy Aliens'—their movements restricted, their loyalty questioned, their American dreams suddenly uncertain."
   },
   {
     title: "Resilience and Legacy",
-    text: "Despite the hardships and suspicion, South Slavic immigrants demonstrated remarkable resilience. Many sought to prove their loyalty by purchasing war bonds, supporting Red Cross efforts, or enlisting in the U.S. military when permitted. Others relied on the mutual-aid societies and fraternal organizations they had built—institutions that provided not only financial support during illness or death but also a sense of community and belonging in difficult times. Their perseverance laid the foundation for future generations, and their stories, preserved in faded photographs and handwritten letters, remind us that the struggle for acceptance and belonging is a timeless human experience."
+    text: "Despite the hardships, they endured. They raised American children, built churches and fraternal halls, and quietly contributed to the fabric of their new nation. Their stories, captured in faded photographs and handwritten letters, remind us that the struggle for belonging is a timeless human experience."
   }
 ];
 
@@ -147,7 +148,7 @@ const ProjectGallery: React.FC = () => {
             transition={{ delay: 0.4 }}
             className="mt-6 text-stone-600 font-light text-lg leading-relaxed max-w-2xl mx-auto italic"
           >
-            A visual journey through the lives of South Slavic immigrants from Austria-Hungary —their hopes, their struggles, and their search for identity in WWI America.
+            A visual journey through the lives of South Slavic immigrants—their hopes, their struggles, and their enduring legacy in America.
           </motion.p>
         </div>
 
@@ -337,29 +338,38 @@ const ProjectGallery: React.FC = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center items-center relative z-10"
+              className="flex justify-center items-end gap-8 relative z-10"
             >
               {/* Left ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 flex-shrink-0 rotate-90" />
+              <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 rotate-90" />
 
-              {/* Single centered bottom image - no border/frame */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                onClick={() => openLightbox(6)}
-                className="relative cursor-pointer mx-8"
-              >
-                <img
+              {/* Photo group 6 */}
+              <div className="relative mb-8">
+                <AlbumPhoto
                   src={galleryImages[6].src}
                   alt={galleryImages[6].alt}
-                  className="max-w-[600px] w-full h-auto object-contain"
+                  rotation={2}
+                  delay={0}
+                  onClick={() => openLightbox(6)}
+                  size="medium"
                 />
-              </motion.div>
+              </div>
+
+              {/* Photo group 7 */}
+              <div className="relative">
+                <AlbumPhoto
+                  src={galleryImages[7].src}
+                  alt={galleryImages[7].alt}
+                  rotation={-2}
+                  delay={0.1}
+                  onClick={() => openLightbox(7)}
+                  size="large"
+                />
+                <FlowerOrnament className="absolute -bottom-4 -left-4 w-8 h-8 text-stone-400" />
+              </div>
 
               {/* Right ornament */}
-              <CornerOrnament className="w-16 h-16 text-stone-400 flex-shrink-0 -rotate-90" flip />
+              <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 -rotate-90" flip />
             </motion.div>
 
             {/* Final story texts */}

@@ -54,13 +54,10 @@ const App: React.FC = () => {
       {/* Simple Footer */}
       <footer className="w-full py-10 text-center border-t border-stone-200 bg-sepia-50">
         <p className="text-xs text-stone-400 uppercase tracking-widest mb-2">
-          &copy; 2025 AaA Project
+          &copy; {new Date().getFullYear()} Enemy Aliens Research Project
         </p>
-        <p className="text-[10px] text-stone-400 tracking-wide mb-2">
-          A postdoctoral project at the Department of History, Faculty of Arts, University of Maribor.
-        </p>
-        <p className="text-[10px] text-stone-400 tracking-wide italic">
-          Select images were upscaled using software.
+        <p className="text-[10px] text-stone-400 tracking-wide">
+          A scholarly initiative by the University of Maribor
         </p>
       </footer>
     </div>
