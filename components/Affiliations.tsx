@@ -5,7 +5,7 @@ const logos = [
   {
     src: '/images/nav-logo-1.svg',
     alt: 'University of Maribor',
-    url: 'https://www.um.si/'
+    url: 'https://ff.um.si/'
   },
   {
     src: '/images/50-let-um-logo.svg',
@@ -37,27 +37,6 @@ const Affiliations: React.FC = () => {
         }}
       />
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-20">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-6"
-        >
-          Affiliated Institutions
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-stone-600 font-light text-base leading-relaxed max-w-2xl mx-auto mb-10"
-        >
-          This research was made possible through the generous support and collaboration of the University of Maribor,
-          commemorating 50 years of academic excellence, and the Slovenian Research and Innovation Agency (ARIS),
-          whose funding enables groundbreaking historical scholarship.
-        </motion.p>
-
         <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16">
           {logos.map((logo, index) => (
             <motion.a

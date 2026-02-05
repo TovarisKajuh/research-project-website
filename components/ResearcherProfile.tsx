@@ -41,16 +41,13 @@ const ResearcherProfile: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-3xl md:text-4xl font-display font-black text-stone-900 uppercase tracking-wide mb-2">
-              Dr. David Hazemali
+              DAVID HAZEMALI, PhD
             </h3>
-            <p className="text-sm text-stone-500 uppercase tracking-widest mb-4">Lead Researcher & Historian</p>
+            <p className="text-sm text-stone-500 uppercase tracking-widest mb-4">PRINCIPAL INVESTIGATOR</p>
             <SmallDivider />
             <div className="space-y-5 text-stone-700 font-light text-lg leading-relaxed">
               <p>
-                Dr. Hazemali specializes in the intersection of migration history and wartime policy in the early 20th century. His work uncovers the silenced narratives of Austro-Hungarian immigrants who found themselves categorized as "Enemy Aliens" overnight.
-              </p>
-              <p>
-                By analyzing surveillance records, internment camp diaries, and legal proceedings, this project aims to reconstruct the fragile status of citizenship during periods of national crisis.
+                David Hazemali is an Assistant Professor and Research Associate in the Department of History at the University of Maribor's Faculty of Arts, where he earned his PhD in December 2023. His research lies at the crossroads of military history, migration studies, and ethnic studies, with recent ventures into linguistics, scientometrics, economics, and the innovative use of conversational AI in the humanities.
               </p>
             </div>
 
@@ -78,22 +75,10 @@ const ResearcherProfile: React.FC = () => {
                 >
                   <div className="mt-8 pt-8 border-t border-stone-200 space-y-6 text-stone-700 font-light text-base leading-relaxed">
                     <p>
-                      Dr. David Hazemali was born and raised in the small town of Fram, nestled in the rolling hills near Maribor in northeastern Slovenia. Growing up in a region steeped in history, he developed an early fascination with the stories of his ancestors and the tumultuous events that shaped their lives.
+                      In addition to his postdoctoral project, he contributes to other research initiatives and output-focused groups, collaborating with multidisciplinary teams to build bridges across academic fields and develop more nuanced approaches to historical inquiry. As a historian, he sees his role not only as interpreting the past, but also as clarifying the processes through which societies make consequential decisions—creating space for reflection and critical dialogue within academia and the wider community.
                     </p>
                     <p>
-                      His academic journey began at the University of Maribor, where he completed his undergraduate studies in History before pursuing doctoral research focused on the experiences of Slovenian populations during the Great War. This period, marked by profound displacement and uncertainty, became the cornerstone of his scholarly work.
-                    </p>
-                    <p>
-                      Dr. Hazemali's research centers on understanding how ordinary Slovenian families navigated the upheavals of World War I, particularly those who sought new beginnings in the United States. He examines the complex interplay between national identity, citizenship, and belonging that these immigrants faced upon arrival in a country that would soon view them with suspicion.
-                    </p>
-                    <p>
-                      A meticulous researcher with a commitment to archival rigor, Dr. Hazemali has spent years combing through immigration records, personal correspondence, and government documents in archives across Slovenia, Austria, and the United States. His approach combines quantitative analysis of migration patterns with qualitative examination of individual narratives, ensuring that the human dimension of history is never lost in broader statistical trends.
-                    </p>
-                    <p>
-                      Beyond his research, Dr. Hazemali is dedicated to making historical knowledge accessible to wider audiences. He regularly collaborates with community organizations and cultural institutions to preserve and share the heritage of Slovenian diaspora communities. He believes that understanding the past is essential for navigating the complexities of contemporary migration and citizenship debates.
-                    </p>
-                    <p>
-                      When not immersed in archival research, Dr. Hazemali enjoys hiking in the Pohorje mountains near his hometown, where the landscape continues to inspire his reflection on the generations who walked those paths before him.
+                      Looking ahead, he is committed to sharing his research with broader audiences and continuing to explore the dynamic intersections between the Slovenian ethnic territory and the United States, advancing scholarship while fostering cultural and academic connections between the two regions in the twenty-first century.
                     </p>
                   </div>
                 </motion.div>

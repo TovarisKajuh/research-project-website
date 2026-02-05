@@ -21,19 +21,20 @@ const galleryImages = [
 const storyParagraphs = [
   {
     title: "Leaving the Old World",
-    text: "They came from the hills of Slovenia, the farms of Croatia, the villages of Serbia. Carrying little more than hope and a few cherished photographs, thousands of South Slavic families boarded steamships bound for America in the early 1900s, seeking prosperity in a land they had only heard of in letters from those who had gone before."
+    text: "They came from the Austro-Hungarian lands inhabited by Slovenians, Croats, and Serbs–mountain villages, market towns, and rural districts where opportunities were limited and the future often felt predetermined. In the last decades of the nineteenth century and the years before the First World War, hundreds of thousands set out for the United States, drawn by the promise of wages and mobility they had often encountered first in letters from relatives and neighbors who had gone ahead. Most did not leave as whole families: the typical migrant was a young man traveling alone, intending to earn money and either return home or send for others later. Some did go back; many stayed, and over time wives, children, siblings, and friends followed, turning individual departures into chain migrations that would carry them, at least at first, through the gates of Ellis Island."
   },
   {
     title: "A New Beginning",
-    text: "Ellis Island greeted them with long lines, medical inspections, and immigration officers who often misspelled their names. Yet they persevered. They settled in mining towns of Pennsylvania, steel mills of Ohio, and stockyards of Chicago—building new lives while clinging to the customs, foods, and songs of their homeland."
+    text: "At Ellis Island they faced long lines, medical inspections, and quick questions from officials working in unfamiliar languages. Still, they pressed on. Many found work in Pennsylvania's mining towns, in Ohio's steel country, and in Chicago's stockyards–building new lives while keeping the customs, foods, and songs that tied them to home."
   },
   {
     title: "The Shadow of War",
-    text: "When war erupted in Europe in 1914, their world changed overnight. Though many had fled the Austro-Hungarian Empire seeking freedom, they were now viewed with suspicion. By 1917, they became 'Enemy Aliens'—their movements restricted, their loyalty questioned, their American dreams suddenly uncertain."
+    text: "The war that broke out in Europe in 1914 felt distant at first–an unfolding catastrophe across the Atlantic. But when the United States entered the conflict in April 1917, everyday life for immigrants from the Austro-Hungarian Empire changed quickly. Suspicion sharpened, questions multiplied, and familiar accents could suddenly draw unwanted attention. After December 1917, when the U.S. declared war on Austria-Hungary, many were officially classified as \"enemy aliens.\" Registration and restrictions followed; movement could be limited, loyalties questioned, and the promise of an American future made suddenly uncertain."
   },
   {
     title: "Resilience and Legacy",
-    text: "Despite the hardships, they endured. They raised American children, built churches and fraternal halls, and quietly contributed to the fabric of their new nation. Their stories, captured in faded photographs and handwritten letters, remind us that the struggle for belonging is a timeless human experience."
+    text: "Despite the hardships, they endured. Many found ways to prove their loyalty in the most direct terms—by registering, complying with restrictions, and, for thousands, serving in the U.S. armed forces. At home they held communities together through mutual-aid societies, fraternal organizations, churches, and neighborhood networks that offered work leads, loans, translation help, and support in times of illness or loss. Their experiences—preserved in photographs, letters, and official papers—show how perseverance, duty, and community could coexist with suspicion, and how the search for belonging can be both deeply personal and stubbornly enduring.",
+    boldText: "This project is helping to keep that record from fading—building a repository of memoirs and newly uncovered sources so the story can be told in their own words."
   }
 ];
 
@@ -152,7 +153,7 @@ const ProjectGallery: React.FC = () => {
             transition={{ delay: 0.4 }}
             className="mt-6 text-stone-600 font-light text-lg leading-relaxed max-w-2xl mx-auto italic"
           >
-            A visual journey through the lives of South Slavic immigrants—their hopes, their struggles, and their enduring legacy in America.
+            A visual journey through the lives of South Slavic immigrants from Austria-Hungary—their hopes, their struggles, and their search for identity in WWI America.
           </motion.p>
         </div>
 
@@ -431,6 +432,11 @@ const ProjectGallery: React.FC = () => {
               <p className="text-stone-600 font-light leading-relaxed">
                 {storyParagraphs[3].text}
               </p>
+              {storyParagraphs[3].boldText && (
+                <p className="text-stone-600 font-semibold leading-relaxed mt-4">
+                  {storyParagraphs[3].boldText}
+                </p>
+              )}
             </motion.div>
           </div>
 
@@ -491,6 +497,11 @@ const ProjectGallery: React.FC = () => {
                   <p className="text-stone-600 font-light text-sm leading-relaxed">
                     {story.text}
                   </p>
+                  {story.boldText && (
+                    <p className="text-stone-600 font-semibold text-sm leading-relaxed mt-3">
+                      {story.boldText}
+                    </p>
+                  )}
                 </div>
 
                 {storyIndex < storyParagraphs.length - 1 && (

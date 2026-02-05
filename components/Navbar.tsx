@@ -68,11 +68,11 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`absolute -bottom-10 md:-bottom-12 left-0 text-2xl md:text-3xl lg:text-4xl font-elegant italic whitespace-nowrap drop-shadow-md ${
+                className={`absolute -bottom-10 md:-bottom-12 left-0 text-lg md:text-xl lg:text-2xl font-elegant italic whitespace-nowrap drop-shadow-md ${
                   scrolled ? 'text-stone-600' : 'text-white/90'
                 }`}
               >
-                South Slavic Enemy Aliens Research
+                A postdoctoral project at the Department of History, Faculty of Arts, University of Maribor.
               </motion.span>
             )}
           </AnimatePresence>
