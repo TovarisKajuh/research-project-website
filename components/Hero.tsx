@@ -4,11 +4,16 @@ import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
 
   useEffect(() => {
     const img = new Image();
     img.src = '/images/hero.png';
     img.onload = () => setImageLoaded(true);
+
+    const mobileImg = new Image();
+    mobileImg.src = '/images/hero-mobile.png';
+    mobileImg.onload = () => setMobileImageLoaded(true);
   }, []);
 
   return (
@@ -16,16 +21,44 @@ const Hero: React.FC = () => {
       {/* Background placeholder while loading */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-700 to-stone-800" />
 
-      {/* Main hero image - no filters */}
+      {/* Desktop hero image - hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: imageLoaded ? 1 : 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
         style={{
           backgroundImage: imageLoaded ? `url('/images/hero.png')` : 'none',
         }}
       />
+
+      {/* Mobile hero image - visible only on mobile */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: mobileImageLoaded ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: mobileImageLoaded ? `url('/images/hero-mobile.png')` : 'none',
+        }}
+      />
+
+      {/* Mobile headline - only visible on mobile */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 md:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-center"
+        >
+          <h1 className="organetto-style text-5xl sm:text-6xl text-white mb-2 drop-shadow-lg">
+            ADAPTATION
+          </h1>
+          <p className="organetto-style text-xl sm:text-2xl text-white/90 tracking-widest drop-shadow-lg">
+            AMIDST ADVERSITY
+          </p>
+        </motion.div>
+      </div>
 
       {/* Bottom gradient - smooth bleed into next section */}
       <div
