@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
             Get in Touch
           </h3>
           <p className="text-stone-600 font-light mb-8 max-w-md">
-            For academic inquiries, speaking engagements, or collaboration regarding the Enemy Aliens archive project.
+            For academic inquiries, speaking engagements, or collaboration regarding the AaA Project.
           </p>
         </div>
 

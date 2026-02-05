@@ -31,8 +31,19 @@ const Navbar: React.FC = () => {
             : 'bg-transparent text-white' // Assuming hero image is dark-ish
         }`}
       >
-        <div className={`font-display font-black tracking-widest text-sm md:text-base uppercase ${scrolled ? 'text-stone-900' : 'text-white'}`}>
-          Research Archive
+        <div className="relative group flex items-center gap-3">
+          <a href="https://ff.um.si/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/logo-1.svg" alt="Faculty of Arts, University of Maribor" className={`h-5 md:h-6 ${scrolled ? '' : 'brightness-0 invert'} opacity-20 hover:opacity-40 transition-opacity`} />
+          </a>
+          <a href="https://www.aris-rs.si/sl/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/logo-2.png" alt="ARIS - Slovenian Research and Innovation Agency" className={`h-5 md:h-6 ${scrolled ? '' : 'brightness-0 invert'} opacity-20 hover:opacity-40 transition-opacity`} />
+          </a>
+          <a href="https://www.um.si/objava/univerza-v-mariboru-praznuje-50-let/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/logo-3.svg" alt="University of Maribor 50th Anniversary" className={`h-5 md:h-6 ${scrolled ? '' : 'brightness-0 invert'} opacity-20 hover:opacity-40 transition-opacity`} />
+          </a>
+          <div className={`absolute top-full left-0 mt-2 px-3 py-2 text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none ${scrolled ? 'bg-stone-900 text-white' : 'bg-white text-stone-900'}`}>
+            A postdoctoral project at the Department of History, Faculty of Arts, University of Maribor.
+          </div>
         </div>
 
         {/* Desktop Menu */}

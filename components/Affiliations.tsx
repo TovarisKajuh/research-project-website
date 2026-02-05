@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 
 const logos = [
   {
-    src: '/images/logotip-um-cropped.svg',
-    alt: 'University of Maribor',
-    url: 'https://www.um.si/'
+    src: '/images/logo-1.svg',
+    alt: 'Faculty of Arts, University of Maribor',
+    url: 'https://ff.um.si/'
   },
   {
-    src: '/images/50-let-um-logo.svg',
-    alt: 'University of Maribor 50th Anniversary',
-    url: 'https://www.um.si/o-univerzi/50-let-univerze-v-mariboru/'
-  },
-  {
-    src: '/images/aris-logo.png',
-    alt: 'Slovenian Research Agency (ARIS)',
+    src: '/images/logo-2.png',
+    alt: 'ARIS - Slovenian Research and Innovation Agency',
     url: 'https://www.aris-rs.si/sl/'
+  },
+  {
+    src: '/images/logo-3.svg',
+    alt: 'University of Maribor 50th Anniversary',
+    url: 'https://www.um.si/objava/univerza-v-mariboru-praznuje-50-let/'
   },
 ];
 
@@ -44,18 +44,6 @@ const Affiliations: React.FC = () => {
           className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-6"
         >
           Affiliated Institutions
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-stone-600 font-light text-base leading-relaxed max-w-2xl mx-auto mb-10"
-        >
-          This research was made possible through the generous support and collaboration of the University of Maribor,
-          commemorating 50 years of academic excellence, and the Slovenian Research and Innovation Agency (ARIS),
-          whose funding enables groundbreaking historical scholarship.
         </motion.p>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16">

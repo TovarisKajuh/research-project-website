@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
 
       {/* Bottom gradient - smooth bleed into next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-[30vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.2) 20%, rgba(41, 37, 36, 0.5) 40%, rgba(41, 37, 36, 0.7) 60%, rgba(249, 248, 246, 0.8) 80%, rgb(249, 248, 246) 100%)'
         }}
@@ -91,9 +91,9 @@ const Hero: React.FC = () => {
             className="h-0.5 w-24 bg-gradient-to-r from-white/80 to-white/20 mb-6"
           />
           <h2 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-light text-stone-100 font-sans tracking-wide">
-            South Slavic Enemy Aliens from <br className="hidden md:block" />
-            <span className="font-semibold text-white">Austria-Hungary</span> in the U.S. <br className="hidden md:block" />
-            during World War
+            <span className="font-semibold text-white">South Slavic Enemy Aliens</span> from <br className="hidden md:block" />
+            Austria-Hungary in the U.S. <br className="hidden md:block" />
+            during World War I
           </h2>
         </motion.div>
       </div>
