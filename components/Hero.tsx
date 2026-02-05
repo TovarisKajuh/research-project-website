@@ -27,8 +27,13 @@ const Hero: React.FC = () => {
         }}
       />
 
-      {/* Bottom grain transition - bleeds into dark gallery section */}
-      <div className="grain-transition-hero-bottom" />
+      {/* Bottom gradient - bleeds into next section (white) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[25%] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.3) 30%, rgba(41, 37, 36, 0.7) 60%, rgb(255, 255, 255) 100%)'
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24">
@@ -54,9 +59,9 @@ const Hero: React.FC = () => {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4 z-20"
       >
-        <span className="text-xs uppercase tracking-widest text-stone-300">Scroll to Explore</span>
+        <span className="text-xs uppercase tracking-widest text-stone-600">Scroll to Explore</span>
         <div className="p-3 border border-stone-400/50 rounded-full backdrop-blur-sm">
-          <ArrowDown className="w-4 h-4 text-stone-300 animate-bounce" />
+          <ArrowDown className="w-4 h-4 text-stone-600 animate-bounce" />
         </div>
       </motion.div>
     </section>

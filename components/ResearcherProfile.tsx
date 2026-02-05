@@ -6,10 +6,8 @@ const ResearcherProfile: React.FC = () => {
   const [bioExpanded, setBioExpanded] = useState(false);
 
   return (
-    <section id="researcher" className="relative pt-40 pb-24 md:pt-48 md:pb-32 bg-sepia-50">
-      {/* Grain transition at top - coming from dark gallery section */}
-      <div className="grain-transition-researcher-top" />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-20">
+    <section id="researcher" className="py-24 md:py-32 bg-sepia-50 border-t border-stone-200">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
         {/* Text Content */}
         <div className="order-2 md:order-1">
@@ -90,20 +88,18 @@ const ResearcherProfile: React.FC = () => {
             transition={{ duration: 1 }}
             className="relative w-full max-w-[460px] aspect-[3/4]"
           >
-            {/* Main image with strong brightness filter at bottom */}
+            {/* Main image with bottom fade gradient overlay */}
             <div className="relative w-full h-full">
               <img
                 src="/images/researcher.png"
                 alt="Dr. David Hazemali"
-                className="w-full h-full object-contain researcher-image-mask"
+                className="w-full h-full object-contain"
               />
-              {/* Strong brightness filter at bottom 5% to hide sharp edge */}
+              {/* White gradient fade at bottom for smooth transition */}
               <div
-                className="absolute bottom-0 left-0 right-0 pointer-events-none"
+                className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
                 style={{
-                  height: '12%',
-                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.4) 30%, rgba(249, 248, 246, 0.85) 60%, rgb(249, 248, 246) 100%)',
-                  filter: 'brightness(1.3)'
+                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.3) 30%, rgba(249, 248, 246, 0.7) 60%, rgba(249, 248, 246, 0.95) 85%, rgb(249, 248, 246) 100%)'
                 }}
               />
             </div>
