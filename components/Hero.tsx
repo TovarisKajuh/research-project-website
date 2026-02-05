@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -63,7 +62,7 @@ const Hero: React.FC = () => {
 
       {/* Bottom gradient - smooth bleed into next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-[40%] md:h-[30%] lg:h-[25%] xl:h-[20%] pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, rgba(41, 37, 36, 0.2) 20%, rgba(41, 37, 36, 0.5) 40%, rgba(41, 37, 36, 0.7) 60%, rgba(249, 248, 246, 0.8) 80%, rgb(249, 248, 246) 100%)'
         }}
@@ -91,26 +90,13 @@ const Hero: React.FC = () => {
             className="h-0.5 w-24 bg-gradient-to-r from-white/80 to-white/20 mb-6"
           />
           <h2 className="text-2xl md:text-3xl lg:text-4xl leading-tight font-light text-stone-100 font-sans tracking-wide">
-            South Slavic Enemy Aliens from <br className="hidden md:block" />
-            <span className="font-semibold text-white">Austria-Hungary</span> in the U.S. <br className="hidden md:block" />
-            during World War
+            <span className="font-semibold text-white">South Slavic Enemy Aliens</span> from <br className="hidden md:block" />
+            Austria-Hungary in the U.S. <br className="hidden md:block" />
+            during World War I
           </h2>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 right-8 md:right-12 flex items-center gap-4 z-20 group cursor-pointer"
-        onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-      >
-        <span className="text-xs uppercase tracking-widest text-stone-600 group-hover:text-stone-800 transition-colors">Scroll to Explore</span>
-        <div className="p-3 border border-stone-400/50 rounded-full backdrop-blur-sm group-hover:border-stone-600 group-hover:bg-white/20 transition-all duration-300">
-          <ArrowDown className="w-4 h-4 text-stone-600 animate-bounce group-hover:text-stone-800" />
-        </div>
-      </motion.div>
     </section>
   );
 };

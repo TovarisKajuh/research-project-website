@@ -3,14 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const galleryImages = [
-  { src: '/images/content1.png', alt: 'Archival Document', caption: 'Historical immigration documents from the early 20th century' },
-  { src: '/images/content2.png', alt: 'Immigrant Portrait', caption: 'Portrait photographs from the internment period' },
-  { src: '/images/content3.png', alt: 'Ship manifest', caption: 'Ship manifests detailing passenger arrivals' },
-  { src: '/images/content4.png', alt: 'Detail view', caption: 'Personal artifacts and correspondence' },
-  { src: '/images/content5.jpg', alt: 'Ellis Island Emigration', caption: 'Emigrants at Ellis Island processing center' },
-  { src: '/images/content6.avif', alt: 'Immigration Processing', caption: 'Immigration officials processing new arrivals' },
-  { src: '/images/content7.jpg', alt: 'Historical Research', caption: 'Archival research and document preservation' },
-  { src: '/images/content8.webp', alt: 'Slavic Immigrant Family', caption: 'A Slavic immigrant family in America' },
+  // Section 1: "Leaving the Old World" - 2 images
+  { src: '/images/gallery-1.png', alt: 'Steamship arriving in New York', caption: 'A steamship arrives in New York Harbor, the Statue of Liberty welcoming new arrivals' },
+  { src: '/images/gallery-2.png', alt: 'Agricultural life in homeland', caption: 'Working the fields in the old country — the life they left behind' },
+  // Section 2: "A New Beginning" - 3 images
+  { src: '/images/gallery-3.png', alt: 'Immigrants on dock', caption: 'Newly arrived immigrants on the dock, gazing at the Manhattan skyline' },
+  { src: '/images/gallery-4.png', alt: 'Immigrant children in garden', caption: 'Children of immigrants tending the family garden in their new homeland' },
+  { src: '/images/gallery-5.png', alt: 'Immigrant family home', caption: 'An immigrant family on the porch of their American home' },
+  // Section 3: "The Shadow of War" - 3 images
+  { src: '/images/gallery-6.png', alt: 'Enemy Alien designation', caption: 'The mark of suspicion — Enemy Alien status divided loyalties and identities' },
+  { src: '/images/gallery-7.png', alt: 'Memorial certificate', caption: 'In Memory Of — many immigrants proved their loyalty with the ultimate sacrifice' },
+  { src: '/images/gallery-8.png', alt: 'Soldier portrait', caption: 'A young immigrant soldier in U.S. Army uniform, ready to serve his new country' },
+  // Section 4: "Resilience and Legacy" - 1 image (borderless)
+  { src: '/images/gallery-9.png', alt: 'Immigrant legacy', caption: 'From distant shores to American soil — the enduring legacy of South Slavic immigrants' },
 ];
 
 const storyParagraphs = [
@@ -87,7 +92,6 @@ const FlowerOrnament: React.FC<{ className?: string }> = ({ className }) => (
 
 const ProjectGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [activeStory, setActiveStory] = useState(0);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -154,9 +158,8 @@ const ProjectGallery: React.FC = () => {
 
         {/* Desktop: Photo Album Layout */}
         <div className="hidden md:block">
-          {/* Album Page 1 - Top Row */}
+          {/* Album Page 1 - "Leaving the Old World" - 2 images */}
           <div className="relative mb-16">
-            {/* Dark fog background for this image group */}
             <div
               className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
@@ -168,12 +171,10 @@ const ProjectGallery: React.FC = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex justify-center items-start gap-8 relative z-10"
+              className="flex justify-center items-start gap-12 relative z-10"
             >
-              {/* Left ornament */}
               <CornerOrnament className="w-16 h-16 text-stone-400 mt-8 flex-shrink-0" />
 
-              {/* Photo group 1 */}
               <div className="relative">
                 <AlbumPhoto
                   src={galleryImages[0].src}
@@ -186,7 +187,6 @@ const ProjectGallery: React.FC = () => {
                 <FlowerOrnament className="absolute -bottom-4 -right-4 w-8 h-8 text-stone-400" />
               </div>
 
-              {/* Photo group 2 - stacked */}
               <div className="relative mt-12">
                 <AlbumPhoto
                   src={galleryImages[1].src}
@@ -194,27 +194,13 @@ const ProjectGallery: React.FC = () => {
                   rotation={2}
                   delay={0.1}
                   onClick={() => openLightbox(1)}
-                  size="medium"
-                />
-              </div>
-
-              {/* Photo group 3 */}
-              <div className="relative -mt-4">
-                <AlbumPhoto
-                  src={galleryImages[2].src}
-                  alt={galleryImages[2].alt}
-                  rotation={-1}
-                  delay={0.2}
-                  onClick={() => openLightbox(2)}
                   size="large"
                 />
               </div>
 
-              {/* Right ornament */}
               <CornerOrnament className="w-16 h-16 text-stone-400 mt-8 flex-shrink-0" flip />
             </motion.div>
 
-            {/* Story text for first row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +217,6 @@ const ProjectGallery: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Decorative divider */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -241,9 +226,8 @@ const ProjectGallery: React.FC = () => {
             <DividerOrnament className="w-64 h-8 text-stone-300" />
           </motion.div>
 
-          {/* Album Page 2 - Middle Row */}
+          {/* Album Page 2 - "A New Beginning" - 3 images */}
           <div className="relative mb-16">
-            {/* Dark fog background for this image group */}
             <div
               className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
@@ -257,47 +241,43 @@ const ProjectGallery: React.FC = () => {
               viewport={{ once: true }}
               className="flex justify-center items-center gap-6 relative z-10"
             >
-              {/* Photo group 4 */}
               <div className="relative">
                 <AlbumPhoto
-                  src={galleryImages[3].src}
-                  alt={galleryImages[3].alt}
+                  src={galleryImages[2].src}
+                  alt={galleryImages[2].alt}
                   rotation={1}
                   delay={0}
-                  onClick={() => openLightbox(3)}
-                  size="small"
+                  onClick={() => openLightbox(2)}
+                  size="medium"
                 />
               </div>
 
-              {/* Central large photo */}
               <div className="relative mx-4">
                 <div className="absolute -inset-4 border border-stone-300 opacity-30" style={{ transform: 'rotate(-1deg)' }} />
                 <AlbumPhoto
-                  src={galleryImages[4].src}
-                  alt={galleryImages[4].alt}
+                  src={galleryImages[3].src}
+                  alt={galleryImages[3].alt}
                   rotation={0}
                   delay={0.1}
-                  onClick={() => openLightbox(4)}
+                  onClick={() => openLightbox(3)}
                   size="xlarge"
                 />
                 <FlowerOrnament className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-400" />
                 <FlowerOrnament className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 text-stone-400" />
               </div>
 
-              {/* Photo group 5 */}
               <div className="relative">
                 <AlbumPhoto
-                  src={galleryImages[5].src}
-                  alt={galleryImages[5].alt}
+                  src={galleryImages[4].src}
+                  alt={galleryImages[4].alt}
                   rotation={-2}
                   delay={0.2}
-                  onClick={() => openLightbox(5)}
-                  size="small"
+                  onClick={() => openLightbox(4)}
+                  size="medium"
                 />
               </div>
             </motion.div>
 
-            {/* Story text for middle row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -314,7 +294,6 @@ const ProjectGallery: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Decorative divider */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -324,9 +303,8 @@ const ProjectGallery: React.FC = () => {
             <DividerOrnament className="w-64 h-8 text-stone-300" />
           </motion.div>
 
-          {/* Album Page 3 - Bottom Row */}
-          <div className="relative">
-            {/* Dark fog background for this image group */}
+          {/* Album Page 3 - "The Shadow of War" - 3 images */}
+          <div className="relative mb-16">
             <div
               className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
               style={{
@@ -340,69 +318,120 @@ const ProjectGallery: React.FC = () => {
               viewport={{ once: true }}
               className="flex justify-center items-end gap-8 relative z-10"
             >
-              {/* Left ornament */}
               <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 rotate-90" />
 
-              {/* Photo group 6 */}
               <div className="relative mb-8">
                 <AlbumPhoto
-                  src={galleryImages[6].src}
-                  alt={galleryImages[6].alt}
+                  src={galleryImages[5].src}
+                  alt={galleryImages[5].alt}
                   rotation={2}
                   delay={0}
-                  onClick={() => openLightbox(6)}
+                  onClick={() => openLightbox(5)}
                   size="medium"
                 />
               </div>
 
-              {/* Photo group 7 */}
               <div className="relative">
                 <AlbumPhoto
-                  src={galleryImages[7].src}
-                  alt={galleryImages[7].alt}
-                  rotation={-2}
+                  src={galleryImages[6].src}
+                  alt={galleryImages[6].alt}
+                  rotation={-1}
                   delay={0.1}
-                  onClick={() => openLightbox(7)}
+                  onClick={() => openLightbox(6)}
                   size="large"
                 />
                 <FlowerOrnament className="absolute -bottom-4 -left-4 w-8 h-8 text-stone-400" />
               </div>
 
-              {/* Right ornament */}
+              <div className="relative mb-4">
+                <AlbumPhoto
+                  src={galleryImages[7].src}
+                  alt={galleryImages[7].alt}
+                  rotation={-2}
+                  delay={0.2}
+                  onClick={() => openLightbox(7)}
+                  size="medium"
+                />
+              </div>
+
               <CornerOrnament className="w-16 h-16 text-stone-400 mb-8 flex-shrink-0 -rotate-90" flip />
             </motion.div>
 
-            {/* Final story texts */}
-            <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto mt-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="max-w-xl mx-auto mt-12 text-center"
+            >
+              <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+                {storyParagraphs[2].title}
+              </h4>
+              <p className="text-stone-600 font-light leading-relaxed">
+                {storyParagraphs[2].text}
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center my-12"
+          >
+            <DividerOrnament className="w-64 h-8 text-stone-300" />
+          </motion.div>
+
+          {/* Album Page 4 - "Resilience and Legacy" - 1 featured image (borderless, 10% smaller) */}
+          <div className="relative">
+            <div
+              className="absolute inset-0 -inset-x-24 -inset-y-16 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 100% 100% at 50% 50%, rgba(68, 64, 60, 0.14) 0%, rgba(68, 64, 60, 0.07) 30%, rgba(68, 64, 60, 0.02) 50%, transparent 65%)',
+                filter: 'blur(20px)'
+              }}
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex justify-center items-center relative z-10"
+            >
+              {/* Borderless featured image - full size, free floating */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-center"
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                onClick={() => openLightbox(8)}
+                className="cursor-pointer"
               >
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
-                  {storyParagraphs[2].title}
-                </h4>
-                <p className="text-stone-600 font-light leading-relaxed">
-                  {storyParagraphs[2].text}
-                </p>
+                <img
+                  src={galleryImages[8].src}
+                  alt={galleryImages[8].alt}
+                  className="max-w-full h-auto sepia-[0.15] hover:sepia-0 transition-all duration-500"
+                />
               </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="text-center"
-              >
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
-                  {storyParagraphs[3].title}
-                </h4>
-                <p className="text-stone-600 font-light leading-relaxed">
-                  {storyParagraphs[3].text}
-                </p>
-              </motion.div>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="max-w-xl mx-auto mt-16 text-center"
+            >
+              <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-3">
+                {storyParagraphs[3].title}
+              </h4>
+              <p className="text-stone-600 font-light leading-relaxed">
+                {storyParagraphs[3].text}
+              </p>
+            </motion.div>
           </div>
 
           {/* Bottom ornament */}
@@ -410,7 +439,7 @@ const ProjectGallery: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-10"
+            className="flex justify-center mt-16"
           >
             <DividerOrnament className="w-48 h-8 text-stone-400" />
           </motion.div>
@@ -418,67 +447,62 @@ const ProjectGallery: React.FC = () => {
 
         {/* Mobile View - Story Cards with Images */}
         <div className="md:hidden space-y-12">
-          {storyParagraphs.map((story, storyIndex) => (
-            <motion.div
-              key={storyIndex}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: storyIndex * 0.1 }}
-              className="relative"
-            >
-              {/* Image pair */}
-              <div className="flex gap-3 mb-6">
-                <motion.div
-                  className="flex-1 relative"
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => openLightbox(storyIndex * 2)}
-                >
-                  <div className="bg-white p-2 shadow-lg" style={{ transform: `rotate(${-2 + storyIndex}deg)` }}>
-                    <img
-                      src={galleryImages[storyIndex * 2]?.src || galleryImages[0].src}
-                      alt={galleryImages[storyIndex * 2]?.alt || 'Historical photo'}
-                      className="w-full h-40 object-cover sepia-[0.2]"
-                    />
-                  </div>
-                </motion.div>
-                {galleryImages[storyIndex * 2 + 1] && (
-                  <motion.div
-                    className="flex-1 relative mt-4"
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => openLightbox(storyIndex * 2 + 1)}
-                  >
-                    <div className="bg-white p-2 shadow-lg" style={{ transform: `rotate(${2 - storyIndex}deg)` }}>
-                      <img
-                        src={galleryImages[storyIndex * 2 + 1].src}
-                        alt={galleryImages[storyIndex * 2 + 1].alt}
-                        className="w-full h-40 object-cover sepia-[0.2]"
-                      />
-                    </div>
-                  </motion.div>
+          {storyParagraphs.map((story, storyIndex) => {
+            // Map story index to image indices based on new layout
+            const imageIndices = storyIndex === 0 ? [0, 1] :
+                                 storyIndex === 1 ? [2, 3, 4] :
+                                 storyIndex === 2 ? [5, 6, 7] : [8];
+
+            return (
+              <motion.div
+                key={storyIndex}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: storyIndex * 0.1 }}
+                className="relative"
+              >
+                {/* Image display */}
+                <div className={`flex gap-3 mb-6 ${imageIndices.length === 1 ? 'justify-center' : ''}`}>
+                  {imageIndices.slice(0, 2).map((imgIndex, i) => (
+                    <motion.div
+                      key={imgIndex}
+                      className={`${imageIndices.length === 1 ? 'w-3/4' : 'flex-1'} relative ${i === 1 ? 'mt-4' : ''}`}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => openLightbox(imgIndex)}
+                    >
+                      <div className="bg-white p-2 shadow-lg" style={{ transform: `rotate(${-2 + i * 3}deg)` }}>
+                        <img
+                          src={galleryImages[imgIndex].src}
+                          alt={galleryImages[imgIndex].alt}
+                          className="w-full h-40 object-cover sepia-[0.2]"
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Story text */}
+                <div className="text-center px-4">
+                  <FlowerOrnament className="w-8 h-8 mx-auto text-stone-400 mb-3" />
+                  <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-2">
+                    {story.title}
+                  </h4>
+                  <p className="text-stone-600 font-light text-sm leading-relaxed">
+                    {story.text}
+                  </p>
+                </div>
+
+                {storyIndex < storyParagraphs.length - 1 && (
+                  <DividerOrnament className="w-32 h-6 mx-auto text-stone-300 mt-8" />
                 )}
-              </div>
-
-              {/* Story text */}
-              <div className="text-center px-4">
-                <FlowerOrnament className="w-8 h-8 mx-auto text-stone-400 mb-3" />
-                <h4 className="text-lg font-display font-bold text-stone-800 uppercase tracking-wide mb-2">
-                  {story.title}
-                </h4>
-                <p className="text-stone-600 font-light text-sm leading-relaxed">
-                  {story.text}
-                </p>
-              </div>
-
-              {storyIndex < storyParagraphs.length - 1 && (
-                <DividerOrnament className="w-32 h-6 mx-auto text-stone-300 mt-8" />
-              )}
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Redesigned with caption on image */}
       <AnimatePresence>
         {selectedImage !== null && (
           <motion.div
@@ -499,28 +523,37 @@ const ProjectGallery: React.FC = () => {
             </motion.button>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.9, rotate: 2 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-5xl max-h-[85vh] w-full bg-white p-4 shadow-2xl overflow-hidden"
+              className="relative max-h-[90vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="w-full h-full max-h-[calc(85vh-8rem)] overflow-hidden">
-                <img
-                  src={galleryImages[selectedImage].src}
-                  alt={galleryImages[selectedImage].alt}
-                  className="w-full h-full object-contain"
-                />
+              {/* Thin white border that fits the image */}
+              <div className="bg-white p-1 inline-block">
+                <div className="relative">
+                  <img
+                    src={galleryImages[selectedImage].src}
+                    alt={galleryImages[selectedImage].alt}
+                    className="max-w-[90vw] max-h-[85vh] object-contain block"
+                  />
+                  {/* Caption overlay on image - bottom left */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="absolute bottom-0 left-0 right-0 p-6"
+                    style={{
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)'
+                    }}
+                  >
+                    <p className="text-white font-elegant italic text-lg md:text-xl drop-shadow-lg">
+                      {galleryImages[selectedImage].caption}
+                    </p>
+                  </motion.div>
+                </div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="p-6 bg-stone-100"
-              >
-                <p className="text-stone-800 text-lg font-light">{galleryImages[selectedImage].caption}</p>
-              </motion.div>
             </motion.div>
           </motion.div>
         )}
@@ -536,14 +569,14 @@ const AlbumPhoto: React.FC<{
   rotation: number;
   delay: number;
   onClick: () => void;
-  size: 'small' | 'medium' | 'large' | 'xlarge';
+  size: 'small' | 'medium' | 'large' | 'xlarge' | 'featured';
 }> = ({ src, alt, rotation, delay, onClick, size }) => {
-  // Desktop sizes increased by 50% (mobile stays same via responsive classes)
   const sizeClasses = {
     small: 'w-36 h-44 md:w-[216px] md:h-[264px]',
     medium: 'w-48 h-56 md:w-[288px] md:h-[336px]',
     large: 'w-56 h-64 md:w-[336px] md:h-[384px]',
     xlarge: 'w-72 h-80 md:w-[432px] md:h-[480px]',
+    featured: 'w-80 h-96 md:w-[540px] md:h-[600px]', // 50% larger than xlarge
   };
 
   return (

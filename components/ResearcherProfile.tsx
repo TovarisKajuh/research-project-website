@@ -111,19 +111,12 @@ const ResearcherProfile: React.FC = () => {
             transition={{ duration: 1 }}
             className="relative w-full max-w-[460px] aspect-[3/4]"
           >
-            {/* Main image with bottom fade gradient overlay */}
+            {/* Main image without overlay */}
             <div className="relative w-full h-full">
               <img
                 src="/images/researcher.png"
                 alt="Dr. David Hazemali"
                 className="w-full h-full object-contain"
-              />
-              {/* White gradient fade at bottom for smooth transition */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to bottom, transparent 0%, rgba(249, 248, 246, 0.3) 30%, rgba(249, 248, 246, 0.7) 60%, rgba(249, 248, 246, 0.95) 85%, rgb(249, 248, 246) 100%)'
-                }}
               />
             </div>
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const logos = [
   {
-    src: '/images/logotip-um-cropped.svg',
+    src: '/images/nav-logo-1.svg',
     alt: 'University of Maribor',
     url: 'https://www.um.si/'
   },
@@ -70,11 +70,7 @@ const Affiliations: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
               whileHover={{ scale: 1.08, y: -4 }}
-              className={`flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-300 cursor-pointer group ${
-                index === 0
-                  ? 'w-40 h-24 md:w-44 md:h-28'
-                  : 'w-44 h-28 md:w-52 md:h-32'
-              }`}
+              className="flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-300 cursor-pointer group w-44 h-28 md:w-52 md:h-32"
             >
               <img
                 src={logo.src}

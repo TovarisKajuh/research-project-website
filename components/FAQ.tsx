@@ -56,20 +56,6 @@ const FAQ: React.FC = () => {
 
   return (
     <section id="faq" className="relative py-16 bg-stone-900 text-stone-100 overflow-hidden">
-      {/* Top gradient for smooth transition from previous section */}
-      <div
-        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(245, 245, 244, 1) 0%, rgba(28, 25, 23, 0.3) 40%, rgba(28, 25, 23, 1) 100%)'
-        }}
-      />
-      {/* Bottom gradient for smooth transition to next section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.8) 50%, rgba(242, 239, 235, 1) 100%)'
-        }}
-      />
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-20">
         <div className="mb-10 text-center md:text-left">
            <span className="text-stone-500 uppercase tracking-widest text-xs font-bold mb-4 block">

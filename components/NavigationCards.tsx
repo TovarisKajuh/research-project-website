@@ -39,9 +39,9 @@ const NavigationCards: React.FC = () => {
       />
       {/* Bottom gradient for smooth transition to next section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(245, 245, 244, 1) 100%)'
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(245, 245, 244, 0.4) 40%, rgba(245, 245, 244, 0.8) 70%, rgba(245, 245, 244, 1) 100%)'
         }}
       />
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
