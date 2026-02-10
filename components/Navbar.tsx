@@ -52,9 +52,10 @@ const Navbar: React.FC = () => {
       >
         {/* Logo Section with 3 logos */}
         <div
-          className="relative flex items-center gap-2 md:gap-3 lg:gap-4"
+          className="relative flex items-center gap-2 md:gap-3 lg:gap-4 py-4 px-2 -mx-2 -my-4"
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
+          onClick={() => setLogoHovered(!logoHovered)}
         >
           <img
             src="/images/nav-logo-1.svg"
@@ -80,13 +81,13 @@ const Navbar: React.FC = () => {
 
           {/* Floating hover text with cinematic fade-in */}
           <AnimatePresence>
-            {logoHovered && (
+            {logoHovered && !scrolled && (
               <motion.span
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`absolute -bottom-10 md:-bottom-12 left-0 text-sm md:text-xl lg:text-2xl font-elegant italic max-w-[80vw] md:whitespace-nowrap drop-shadow-md ${
+                className={`absolute -bottom-14 md:-bottom-16 left-0 text-sm md:text-xl lg:text-2xl font-elegant italic max-w-[80vw] md:whitespace-nowrap drop-shadow-md ${
                   scrolled ? 'text-stone-600' : 'text-white/90'
                 }`}
               >
