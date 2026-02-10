@@ -471,21 +471,31 @@ const ProjectGallery: React.FC = () => {
               >
                 {/* Image display */}
                 <div className={`flex gap-3 mb-6 ${imageIndices.length === 1 ? 'justify-center' : ''}`}>
-                  {imageIndices.slice(0, 2).map((imgIndex, i) => (
+                  {imageIndices.map((imgIndex, i) => (
                     <motion.div
                       key={imgIndex}
                       className={`${imageIndices.length === 1 ? 'w-3/4' : 'flex-1'} relative ${i === 1 ? 'mt-4' : ''}`}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => openLightbox(imgIndex)}
                     >
-                      <div className="bg-white p-2 shadow-lg" style={{ transform: `rotate(${-2 + i * 3}deg)` }}>
+                      {/* Conditionally render frame for images 0-7, borderless for image 8 */}
+                      {imgIndex === 8 ? (
                         <img
                           src={galleryImages[imgIndex].src}
                           alt={galleryImages[imgIndex].alt}
                           loading="lazy"
-                          className="w-full h-40 object-cover sepia-[0.2]"
+                          className="w-full h-auto object-cover sepia-[0.2]"
                         />
-                      </div>
+                      ) : (
+                        <div className="bg-white p-2 shadow-lg" style={{ transform: `rotate(${-2 + i * 3}deg)` }}>
+                          <img
+                            src={galleryImages[imgIndex].src}
+                            alt={galleryImages[imgIndex].alt}
+                            loading="lazy"
+                            className="w-full h-40 object-cover sepia-[0.2]"
+                          />
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>

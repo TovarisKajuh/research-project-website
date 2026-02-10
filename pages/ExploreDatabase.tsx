@@ -91,7 +91,7 @@ const ExploreDatabase: React.FC = () => {
       </header>
 
       {/* Search Section */}
-      <section className="bg-white border-b border-stone-200 py-12 sticky top-0 z-40">
+      <section className="bg-white border-b border-stone-200 py-12">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
