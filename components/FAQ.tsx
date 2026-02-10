@@ -23,7 +23,7 @@ const faqs: ExtendedFAQItem[] = [
   },
   {
     question: "Research objective",
-    answer: "The main objective of the project is to document the impact of enemy Alien status on the South Slavic immigrants and their ethnic communities in the U.S., who faced registration, surveillance, restriction, confiscation, and discrimination by the U.S. government and society after the U.S. declared war on Austria-Hungary on December 7, 1917.",
+    answer: "The main objective of the project is to document the impact of Enemy Alien status on the South Slavic immigrants (Slovenians, Croats, and Serbs) and their ethnic communities in the U.S., who faced registration, surveillance, restriction, confiscation, and discrimination by the U.S. government and society after the U.S. declared war on Austria-Hungary on December 7, 1917.",
     subItems: [
       { id: "SO1", text: "Case studies of the impact of the World War I Enemy Alien status on Slovenians, Croatians and Serbs and their ethnic communities in the U.S." },
       { id: "SO2", text: "Comparative analysis of the experiences and narratives of South Slavic ethnic communities in the U.S. in the wake of World War I Enemy Alien regulations" },

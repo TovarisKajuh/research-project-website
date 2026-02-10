@@ -1,17 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar, Download } from 'lucide-react';
+import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar } from 'lucide-react';
+
+interface DatabaseStats {
+  documents: number;
+  photographs: number;
+  individuals: number;
+  locations: number;
+  correspondence: number;
+}
 
 const ExploreDatabase: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [stats, setStats] = useState<DatabaseStats>({
+    documents: 0,
+    photographs: 0,
+    individuals: 0,
+    locations: 0,
+    correspondence: 0,
+  });
+
+  useEffect(() => {
+    // Fetch database statistics from metadata file
+    fetch('/content/metadata.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setStats({
+          documents: data.documents || 0,
+          photographs: data.photographs || 0,
+          individuals: data.individuals || 0,
+          locations: data.locations || 0,
+          correspondence: data.correspondence || 0,
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching database statistics:', error);
+      });
+  }, []);
+
+  // Calculate total records
+  const totalRecords = stats.documents + stats.photographs + stats.individuals + stats.locations + stats.correspondence;
 
   const categories = [
-    { id: 'all', label: 'All Records', count: 12847 },
-    { id: 'documents', label: 'Documents', count: 5623 },
-    { id: 'photographs', label: 'Photographs', count: 3291 },
-    { id: 'records', label: 'Personal Records', count: 2156 },
-    { id: 'correspondence', label: 'Correspondence', count: 1777 },
+    { id: 'all', label: 'All Records', count: totalRecords },
+    { id: 'documents', label: 'Documents', count: stats.documents },
+    { id: 'photographs', label: 'Photographs', count: stats.photographs },
+    { id: 'records', label: 'Personal Records', count: stats.individuals },
+    { id: 'correspondence', label: 'Correspondence', count: stats.correspondence },
   ];
 
   const sampleRecords = [
@@ -103,14 +139,17 @@ const ExploreDatabase: React.FC = () => {
           className="mb-16"
         >
           <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-6">
-            About the Archive
+            About the Digital Archive and Database
           </h2>
           <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
             <p>
-              Our digital archive contains over 12,000 records documenting the experiences of South Slavic immigrants designated as enemy aliens during World War I. This collection represents years of collaborative effort with archives, libraries, and family descendants across the United States and Europe.
+              This digital archive and database will document the experiences of South Slavic immigrant communities from Austria-Hungary in the United States during World War I and its aftermath. The focus extends beyond formal enemy alien status to include how wartime policies, public pressure, and local responses shaped everyday life across communities.
             </p>
             <p>
-              The database includes enemy alien registration forms, surveillance reports, internment camp records, naturalization applications, personal correspondence, photographs, and oral history transcripts. Each item has been carefully digitized, transcribed where applicable, and indexed to enable comprehensive searching.
+              The database will bring together a wide range of sources, including enemy alien registration materials, government correspondence and reports, internment and detention records, naturalization and immigration files, newspapers, personal letters and memoirs, photographs, and other community and family documentation. Where possible, items will be described, indexed, and linked to related records to support both browsing and targeted searching.
+            </p>
+            <p>
+              The database will grow organically as the project progresses, with new entries, case studies, and digitized materials added through ongoing research and public contributions, and it is hoped that it will continue to expand beyond the project's duration.
             </p>
           </div>
         </motion.section>
@@ -125,22 +164,22 @@ const ExploreDatabase: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white p-6 border border-stone-200 text-center">
               <FileText className="w-8 h-8 mx-auto mb-4 text-stone-400" />
-              <span className="block text-3xl font-display font-black text-stone-900">5,623</span>
+              <span className="block text-3xl font-display font-black text-stone-900">{stats.documents.toLocaleString()}</span>
               <span className="text-xs uppercase tracking-widest text-stone-500">Documents</span>
             </div>
             <div className="bg-white p-6 border border-stone-200 text-center">
               <Image className="w-8 h-8 mx-auto mb-4 text-stone-400" />
-              <span className="block text-3xl font-display font-black text-stone-900">3,291</span>
+              <span className="block text-3xl font-display font-black text-stone-900">{stats.photographs.toLocaleString()}</span>
               <span className="text-xs uppercase tracking-widest text-stone-500">Photographs</span>
             </div>
             <div className="bg-white p-6 border border-stone-200 text-center">
               <Users className="w-8 h-8 mx-auto mb-4 text-stone-400" />
-              <span className="block text-3xl font-display font-black text-stone-900">8,432</span>
+              <span className="block text-3xl font-display font-black text-stone-900">{stats.individuals.toLocaleString()}</span>
               <span className="text-xs uppercase tracking-widest text-stone-500">Individuals</span>
             </div>
             <div className="bg-white p-6 border border-stone-200 text-center">
               <MapPin className="w-8 h-8 mx-auto mb-4 text-stone-400" />
-              <span className="block text-3xl font-display font-black text-stone-900">347</span>
+              <span className="block text-3xl font-display font-black text-stone-900">{stats.locations.toLocaleString()}</span>
               <span className="text-xs uppercase tracking-widest text-stone-500">Locations</span>
             </div>
           </div>
@@ -238,14 +277,14 @@ const ExploreDatabase: React.FC = () => {
           <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-6">
             How to Use the Database
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 border border-stone-200">
               <div className="w-12 h-12 bg-stone-100 flex items-center justify-center mb-6">
                 <span className="text-xl font-display font-black text-stone-400">1</span>
               </div>
               <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Search</h3>
               <p className="text-stone-600 font-light leading-relaxed">
-                Use the search bar to find records by name, location, date, or document type. Our advanced search allows you to combine multiple criteria for precise results.
+                Use the search bar to find records by ethnicity/ethnic group, name, location, date, or document type. The advanced search allows you to combine multiple criteria for precise results.
               </p>
             </div>
             <div className="bg-white p-8 border border-stone-200">
@@ -255,15 +294,6 @@ const ExploreDatabase: React.FC = () => {
               <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Explore</h3>
               <p className="text-stone-600 font-light leading-relaxed">
                 Browse through categories, view high-resolution scans, and read transcriptions. Related records are linked together to help you trace individual stories.
-              </p>
-            </div>
-            <div className="bg-white p-8 border border-stone-200">
-              <div className="w-12 h-12 bg-stone-100 flex items-center justify-center mb-6">
-                <span className="text-xl font-display font-black text-stone-400">3</span>
-              </div>
-              <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Download</h3>
-              <p className="text-stone-600 font-light leading-relaxed">
-                Save records to your personal collection, download images for research, and export citations. All materials are available for non-commercial use with attribution.
               </p>
             </div>
           </div>
@@ -281,61 +311,17 @@ const ExploreDatabase: React.FC = () => {
           </h2>
           <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
             <p>
-              When searching for ancestors, try multiple spelling variations of names. Immigration officials often anglicized or misspelled Slavic names, and individuals themselves sometimes adopted different spellings over time. A search for "Horvat" might also require checking "Horvath," "Horwat," or "Harvat."
+              When searching for people, try multiple spelling variations of names. Immigration officials often misspelled Slavic names or rendered them in more familiar forms, and individuals themselves sometimes used different spellings over time. A search for "Horvat" may also require checking "Horvath," "Horwat," or "Harvat."
             </p>
             <p>
-              Geographic designations can also be confusing. Many immigrants listed their birthplace as Austria-Hungary, while others specified the region (Croatia, Slovenia, Dalmatia) or the village. Our database attempts to normalize these entries, but checking multiple location terms often yields additional results.
+              Geographic designations can be just as confusing. In historical records, the same person might list a birthplace as Austria Hungary, Austria, or Hungary, while others gave a province or region such as Carniola, Styria, Istria, Dalmatia, Croatia Slavonia, or Bosnia and Herzegovina. Some recorded only a city or village name, sometimes written in German, Hungarian, Italian, or a local Slavic spelling, and sometimes in an Americanized or heavily misspelled form.
             </p>
             <p>
-              If you are researching family history, we encourage you to contact us. Our team may be able to assist with difficult searches, and we are always grateful to receive additional documents or photographs that families are willing to share with the archive.
+              The database attempts to normalize these entries, but searching across multiple terms and variants often yields additional results. When in doubt, try a mix of country level labels, regional names, and specific towns or parishes.
             </p>
           </div>
         </motion.section>
 
-        {/* Download Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-stone-900 text-white p-12 text-center"
-        >
-          <Download className="w-12 h-12 mx-auto mb-6 text-stone-400" />
-          <h2 className="text-2xl font-display font-bold uppercase tracking-wide mb-4">
-            Download Research Guides
-          </h2>
-          <p className="text-stone-400 font-light max-w-2xl mx-auto mb-8">
-            Access our comprehensive research guides, including tips for tracing enemy alien ancestors, reading handwritten documents, and understanding the legal framework of wartime restrictions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 border-2 border-white text-white uppercase tracking-widest text-sm font-bold hover:bg-white hover:text-stone-900 transition-colors">
-              Genealogy Guide (PDF)
-            </button>
-            <button className="px-8 py-4 border-2 border-white text-white uppercase tracking-widest text-sm font-bold hover:bg-white hover:text-stone-900 transition-colors">
-              Document Reading Guide (PDF)
-            </button>
-          </div>
-        </motion.section>
-
-        {/* Call to Action */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center py-16 border-t border-stone-200 mt-16"
-        >
-          <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-4">
-            Contribute to the Archive
-          </h2>
-          <p className="text-stone-600 font-light max-w-2xl mx-auto mb-8">
-            Do you have documents, photographs, or family stories related to South Slavic enemy aliens? Your contributions help preserve this important history for future generations.
-          </p>
-          <a
-            href="#/"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-stone-800 transition-colors"
-          >
-            Contact Us to Contribute
-          </a>
-        </motion.section>
       </main>
     </div>
   );

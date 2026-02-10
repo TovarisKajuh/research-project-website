@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Importing Montserrat for the Organetto Ultra Bold look-alike and Inter for crisp body text -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Inter:wght@300;400;500;600&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+    <!-- Preload critical hero images for faster initial load -->
+    <link rel="preload" as="image" href="/images/hero.webp" media="(min-width: 768px)" />
+    <link rel="preload" as="image" href="/images/hero-mobile.webp" media="(max-width: 767px)" />
     <script>
       tailwind.config = {
         theme: {

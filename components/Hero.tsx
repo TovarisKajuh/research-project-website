@@ -7,11 +7,11 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/hero.png';
+    img.src = '/images/hero.webp';
     img.onload = () => setImageLoaded(true);
 
     const mobileImg = new Image();
-    mobileImg.src = '/images/hero-mobile.png';
+    mobileImg.src = '/images/hero-mobile.webp';
     mobileImg.onload = () => setMobileImageLoaded(true);
   }, []);
 
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
         style={{
-          backgroundImage: imageLoaded ? `url('/images/hero.png')` : 'none',
+          backgroundImage: imageLoaded ? `url('/images/hero.webp')` : 'none',
         }}
       />
 
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
         style={{
-          backgroundImage: mobileImageLoaded ? `url('/images/hero-mobile.png')` : 'none',
+          backgroundImage: mobileImageLoaded ? `url('/images/hero-mobile.webp')` : 'none',
         }}
       />
 

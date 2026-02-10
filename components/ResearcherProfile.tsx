@@ -99,7 +99,7 @@ const ResearcherProfile: React.FC = () => {
             {/* Main image without overlay */}
             <div className="relative w-full h-full">
               <img
-                src="/images/researcher.png"
+                src="/images/researcher.webp"
                 alt="Dr. David Hazemali"
                 className="w-full h-full object-contain"
               />

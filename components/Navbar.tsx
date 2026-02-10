@@ -16,12 +16,30 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#gallery' },
+    { name: 'About', href: '#/history' },
     { name: 'Research', href: '#/research' },
     { name: 'Database', href: '#/database' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // Check if it's a route (starts with #/) or an anchor (starts with # only)
+    if (href.startsWith('#/')) {
+      // For routes, update the hash and scroll to top
+      window.location.hash = href;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // For anchors, scroll to the element
+      const targetId = href.substring(1); // Remove the #
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   return (
     <>
@@ -46,7 +64,7 @@ const Navbar: React.FC = () => {
             }`}
           />
           <img
-            src="/images/nav-logo-2.png"
+            src="/images/nav-logo-2.webp"
             alt="University Logo 2"
             className={`h-6 md:h-8 lg:h-10 w-auto transition-all duration-300 ${
               scrolled ? '' : 'brightness-0 invert'
@@ -84,6 +102,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-widest uppercase relative transition-all duration-300 hover:-translate-y-0.5 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 ${scrolled ? 'text-stone-800 hover:text-stone-600' : 'text-stone-100 hover:text-white'}`}
             >
               {link.name}
@@ -118,7 +137,10 @@ const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(e, link.href);
+                  setMobileMenuOpen(false);
+                }}
                 className="text-2xl font-display font-bold uppercase tracking-widest hover:text-stone-400 transition-colors"
               >
                 {link.name}

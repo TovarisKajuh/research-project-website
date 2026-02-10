@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ImageModal } from './ImageModal';
 
 const galleryImages = [
   // Section 1: "Leaving the Old World" - 2 images
-  { src: '/images/gallery-1.png', alt: 'Steamship arriving in New York', caption: 'A steamship arrives in New York Harbor, the Statue of Liberty welcoming new arrivals' },
-  { src: '/images/gallery-2.png', alt: 'Agricultural life in homeland', caption: 'Working the fields in the old country — the life they left behind' },
+  { src: '/images/gallery-1.webp', alt: 'Steamship arriving in New York', caption: 'A steamship arrives in New York Harbor, the Statue of Liberty welcoming new arrivals' },
+  { src: '/images/gallery-2.webp', alt: 'Agricultural life in homeland', caption: 'Working the fields in the old country — the life they left behind' },
   // Section 2: "A New Beginning" - 3 images
-  { src: '/images/gallery-3.png', alt: 'Immigrants on dock', caption: 'Newly arrived immigrants on the dock, gazing at the Manhattan skyline' },
-  { src: '/images/gallery-4.png', alt: 'Immigrant children in garden', caption: 'Children of immigrants tending the family garden in their new homeland' },
-  { src: '/images/gallery-5.png', alt: 'Immigrant family home', caption: 'An immigrant family on the porch of their American home' },
+  { src: '/images/gallery-3.webp', alt: 'Immigrants on dock', caption: 'Newly arrived immigrants on the dock, gazing at the Manhattan skyline' },
+  { src: '/images/gallery-4.webp', alt: 'Immigrant children in garden', caption: 'Children of immigrants tending the family garden in their new homeland' },
+  { src: '/images/gallery-5.webp', alt: 'Immigrant family home', caption: 'An immigrant family on the porch of their American home' },
   // Section 3: "The Shadow of War" - 3 images
-  { src: '/images/gallery-6.png', alt: 'Enemy Alien designation', caption: 'The mark of suspicion — Enemy Alien status divided loyalties and identities' },
-  { src: '/images/gallery-7.png', alt: 'Memorial certificate', caption: 'In Memory Of — many immigrants proved their loyalty with the ultimate sacrifice' },
-  { src: '/images/gallery-8.png', alt: 'Soldier portrait', caption: 'A young immigrant soldier in U.S. Army uniform, ready to serve his new country' },
+  { src: '/images/gallery-6.webp', alt: 'Enemy Alien designation', caption: 'The mark of suspicion — Enemy Alien status divided loyalties and identities' },
+  { src: '/images/gallery-7.webp', alt: 'Memorial certificate', caption: 'In Memory Of — many immigrants proved their loyalty with the ultimate sacrifice' },
+  { src: '/images/gallery-8.webp', alt: 'Soldier portrait', caption: 'A young immigrant soldier in U.S. Army uniform, ready to serve his new country' },
   // Section 4: "Resilience and Legacy" - 1 image (borderless)
-  { src: '/images/gallery-9.png', alt: 'Immigrant legacy', caption: 'From distant shores to American soil — the enduring legacy of South Slavic immigrants' },
+  { src: '/images/gallery-9.webp', alt: 'Immigrant legacy', caption: 'From distant shores to American soil — the enduring legacy of South Slavic immigrants' },
 ];
 
 const storyParagraphs = [
@@ -414,6 +414,7 @@ const ProjectGallery: React.FC = () => {
                 <img
                   src={galleryImages[8].src}
                   alt={galleryImages[8].alt}
+                  loading="lazy"
                   className="max-w-full h-auto sepia-[0.15] hover:sepia-0 transition-all duration-500"
                 />
               </motion.div>
@@ -481,6 +482,7 @@ const ProjectGallery: React.FC = () => {
                         <img
                           src={galleryImages[imgIndex].src}
                           alt={galleryImages[imgIndex].alt}
+                          loading="lazy"
                           className="w-full h-40 object-cover sepia-[0.2]"
                         />
                       </div>
@@ -513,62 +515,14 @@ const ProjectGallery: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal - Redesigned with caption on image */}
-      <AnimatePresence>
-        {selectedImage !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-            onClick={closeLightbox}
-          >
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute top-6 right-6 p-3 text-white/80 hover:text-white transition-colors z-50"
-              onClick={closeLightbox}
-            >
-              <X className="w-8 h-8" />
-            </motion.button>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-h-[90vh] overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Thin white border that fits the image */}
-              <div className="bg-white p-1 inline-block">
-                <div className="relative">
-                  <img
-                    src={galleryImages[selectedImage].src}
-                    alt={galleryImages[selectedImage].alt}
-                    className="max-w-[90vw] max-h-[85vh] object-contain block"
-                  />
-                  {/* Caption overlay on image - bottom left */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="absolute bottom-0 left-0 right-0 p-6"
-                    style={{
-                      background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)'
-                    }}
-                  >
-                    <p className="text-white font-elegant italic text-lg md:text-xl drop-shadow-lg">
-                      {galleryImages[selectedImage].caption}
-                    </p>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Lightbox Modal */}
+      <ImageModal
+        isOpen={selectedImage !== null}
+        onClose={closeLightbox}
+        imageSrc={selectedImage !== null ? galleryImages[selectedImage].src : ''}
+        imageAlt={selectedImage !== null ? galleryImages[selectedImage].alt : ''}
+        caption={selectedImage !== null ? galleryImages[selectedImage].caption : undefined}
+      />
     </section>
   );
 };
@@ -612,6 +566,7 @@ const AlbumPhoto: React.FC<{
         <img
           src={src}
           alt={alt}
+          loading="lazy"
           className="w-full h-full object-cover sepia-[0.15] group-hover:sepia-0 transition-all duration-500"
         />
       </div>

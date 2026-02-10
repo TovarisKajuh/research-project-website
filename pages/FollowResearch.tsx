@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, FileText, Users, Calendar } from 'lucide-react';
+import { ImageModal } from '../components/ImageModal';
 
 const FollowResearch: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const openModal = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div className="min-h-screen bg-sepia-50">
       {/* Header */}
@@ -44,92 +55,48 @@ const FollowResearch: React.FC = () => {
           className="mb-20"
         >
           <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-6">
-            Our Research Methodology
+            The Research Methodology
           </h2>
           <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
             <p>
-              The Enemy Aliens Research Project employs a multi-disciplinary approach to uncovering the experiences of South Slavic immigrants during World War I. Our methodology combines traditional archival research with digital humanities techniques, enabling us to analyze vast collections of documents that would otherwise remain inaccessible.
+              This project combines historical research, genealogical reconstruction, and digital methods to document how Slovenians, Croatians, and Serbs from Austria Hungary experienced enemy alien policies in the United States during World War I and in the uncertain postwar years.
             </p>
             <p>
-              We work closely with archives across the United States and Europe, including the National Archives and Records Administration, the Ellis Island Foundation, and numerous regional historical societies. Our team has developed specialized protocols for handling fragile documents, many of which have not been examined in over a century.
+              The work begins with focused archival research. In the United States, the emphasis is on federal records connected to World War I enemy alien control programs and related materials produced by agencies such as the Department of Justice, the State Department, the Office of Alien Property, federal courts, and immigration authorities. Community level sources are equally important, especially the archival traces of immigrant institutions such as fraternal benefit societies, parishes, and cultural or political associations.
             </p>
             <p>
-              Central to our approach is the principle of recovering individual voices. Rather than treating immigrants as statistical abstractions, we seek to reconstruct their personal narratives through letters, diaries, court testimonies, and oral history collections. This human-centered methodology reveals the emotional and psychological dimensions of the enemy alien experience that official records often obscure.
+              Newspapers form another central body of evidence. Slovenian, Croatian, and Serbian language papers did more than report events. They recorded community debates, published information about men in uniform, and captured public responses to registration, surveillance, arrests, and pressure to demonstrate loyalty. Because wartime censorship and the circulation of rumors shaped what appeared in print, these sources are read critically and compared with official documentation.
+            </p>
+            <p>
+              To move from scattered records to identifiable lives, a structured mixed workflow is used. The process starts with archival finding aids and indexes, then connects individuals to passenger lists, census schedules, naturalization files, military records, and local documentation. This makes it possible to reconstruct individual and family histories while also tracing broader patterns across regions and communities.
+            </p>
+            <p>
+              Digital humanities tools support the research throughout. Text processing, tagging, and data visualization help organize large document sets, compare cases across locations and ethnic communities, and reveal patterns that can be missed through close reading alone. The project also builds a curated digital database of selected personal, family, organizational, and community case studies, including a dedicated section on documented detainees and internees, so that results can be shared in a usable form with both scholars and the wider public.
             </p>
           </div>
         </motion.section>
 
-        {/* Image Placeholder 1 */}
+        {/* Archival Research Photo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 bg-stone-200 h-80 flex items-center justify-center border-2 border-dashed border-stone-300"
+          className="mb-20 flex justify-center"
         >
-          <div className="text-center text-stone-500">
-            <FileText className="w-12 h-12 mx-auto mb-4" />
-            <p className="uppercase tracking-widest text-sm">Research Documentation Image</p>
-            <p className="text-xs mt-2">Placeholder for archival research photo</p>
-          </div>
-        </motion.div>
-
-        {/* Current Research Areas */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-6">
-            Current Research Areas
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 border border-stone-200">
-              <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Surveillance Records Analysis</h3>
-              <p className="text-stone-600 font-light leading-relaxed">
-                We are currently digitizing and analyzing thousands of surveillance reports created by the Bureau of Investigation (precursor to the FBI) during 1917-1918. These documents reveal the extent of government monitoring of immigrant communities and the criteria used to designate individuals as potential threats.
-              </p>
-            </div>
-            <div className="bg-white p-8 border border-stone-200">
-              <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Internment Camp Documentation</h3>
-              <p className="text-stone-600 font-light leading-relaxed">
-                Our team is compiling the first comprehensive database of South Slavic internees at Hot Springs, North Carolina and Fort Oglethorpe, Georgia. This includes personal effects inventories, medical records, and correspondence that illuminate daily life within the camps.
-              </p>
-            </div>
-            <div className="bg-white p-8 border border-stone-200">
-              <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Legal Proceedings Research</h3>
-              <p className="text-stone-600 font-light leading-relaxed">
-                We are examining court records from enemy alien hearings to understand how legal definitions of loyalty and citizenship were applied. These proceedings reveal the arbitrary nature of many designations and the limited due process afforded to those accused.
-              </p>
-            </div>
-            <div className="bg-white p-8 border border-stone-200">
-              <h3 className="font-display font-bold text-stone-900 uppercase mb-4">Community Impact Studies</h3>
-              <p className="text-stone-600 font-light leading-relaxed">
-                Through oral histories and community archives, we are documenting how enemy alien policies affected entire neighborhoods. The stigma of suspicion often extended beyond designated individuals to their families and ethnic communities, with lasting intergenerational effects.
-              </p>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Image Placeholder 2 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20 grid grid-cols-2 gap-4"
-        >
-          <div className="bg-stone-200 h-64 flex items-center justify-center border-2 border-dashed border-stone-300">
-            <div className="text-center text-stone-500">
-              <Users className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-xs uppercase tracking-widest">Team Photo</p>
-            </div>
-          </div>
-          <div className="bg-stone-200 h-64 flex items-center justify-center border-2 border-dashed border-stone-300">
-            <div className="text-center text-stone-500">
-              <FileText className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-xs uppercase tracking-widest">Archive Visit</p>
-            </div>
-          </div>
+          <motion.div
+            className="bg-white p-3 shadow-xl cursor-pointer max-w-2xl mx-auto relative"
+            style={{ rotate: -1.5 }}
+            whileHover={{ rotate: 0, scale: 1.02, y: -8 }}
+            onClick={() => openModal('/content/image b.webp', 'Archival research documentation')}
+          >
+            <img
+              src="/content/image b.webp"
+              alt="Archival research documentation"
+              loading="lazy"
+              className="w-full h-auto sepia-[0.15] hover:sepia-0 transition-all duration-500"
+            />
+            <div className="absolute inset-3 pointer-events-none border border-stone-200/50" />
+          </motion.div>
         </motion.div>
 
         {/* Timeline */}
@@ -144,10 +111,11 @@ const FollowResearch: React.FC = () => {
           </h2>
           <div className="space-y-8">
             {[
-              { phase: 'Phase 1', title: 'Archive Identification & Access', description: 'Establishing partnerships with archives and obtaining necessary permissions for document access and reproduction.' },
-              { phase: 'Phase 2', title: 'Document Digitization', description: 'High-resolution scanning and metadata creation for thousands of primary source documents.' },
-              { phase: 'Phase 3', title: 'Database Development', description: 'Building searchable databases to connect individuals across multiple document types and collections.' },
-              { phase: 'Phase 4', title: 'Analysis & Publication', description: 'Synthesizing findings into academic publications, public exhibitions, and educational materials.' },
+              { phase: 'Phase 1', title: '(Months 1 to 8)', description: 'A focused literature review is completed, archival research is carried out, and a primary source corpus is compiled, systematized, and annotated. The first version of the digital database is released, including a section on documented South Slavic detainees and internees.' },
+              { phase: 'Phase 2', title: '(Months 9 to 14)', description: 'Community level case studies are developed for Slovenian American, Croatian American, and Serbian American materials. At least two journal articles are submitted, and the database is expanded with a major update.' },
+              { phase: 'Phase 3', title: '(Months 15 to 18)', description: 'A comparative South Slavic synthesis is completed across the three communities. At least one additional journal article is submitted, and the database is updated.' },
+              { phase: 'Phase 4', title: '(Months 19 to 22)', description: 'A comparative analysis with German American cases is completed. At least one further journal article is submitted, and the database is updated.' },
+              { phase: 'Phase 5', title: '(Months 21 to 24)', description: 'A curated digital collection is prepared from selected personal, family, organizational, and community histories. Public outputs are prepared, including an exhibition and a genealogy workshop. A final database and collection release is completed, and a monograph plan is produced.' },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-24">
@@ -169,23 +137,54 @@ const FollowResearch: React.FC = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-6">
+          <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-8">
             Publications & Presentations
           </h2>
-          <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
-            <p>
-              Our research has been presented at numerous academic conferences, including the American Historical Association Annual Meeting, the Immigration and Ethnic History Society Conference, and the Organization of American Historians Convention. We maintain an active publication schedule in peer-reviewed journals.
-            </p>
-            <p>
-              Beyond academic venues, we are committed to public engagement. Our findings have been featured in documentary films, museum exhibitions, and community presentations. We believe that the stories we uncover belong not only to scholars but to the descendants of those affected and to the broader public.
-            </p>
+
+          {/* Presentations Subsection */}
+          <div className="mb-12">
+            <h3 className="text-xl font-display font-bold text-stone-900 mb-6">Presentations</h3>
+            <div className="prose prose-lg text-stone-700 font-light leading-relaxed">
+              <p>
+                Hazemali, David: Brezje v Washingtonu : Ciril Žebot in geneza slovenske Kapele brezjanske Marije Pomagaj v ameriški prestolnici : paper presented at the scientific conference Slovenci po svetu in konec druge svetovne vojne, Ljubljana, Fakulteta za slovenske in mednarodne študije Nove univerze, 17 October 2025.
+              </p>
+            </div>
           </div>
 
-          {/* Image Placeholder 3 */}
-          <div className="mt-8 bg-stone-200 h-48 flex items-center justify-center border-2 border-dashed border-stone-300">
-            <div className="text-center text-stone-500">
-              <Calendar className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-xs uppercase tracking-widest">Conference Presentation Photo</p>
+          {/* Conference Presentation Photo */}
+          <div className="mb-12 flex justify-center">
+            <motion.div
+              className="bg-white p-3 shadow-xl cursor-pointer max-w-2xl mx-auto relative"
+              style={{ rotate: 1.5 }}
+              whileHover={{ rotate: 0, scale: 1.02, y: -8 }}
+              onClick={() => openModal('/content/image a.webp', 'Conference presentation')}
+            >
+              <img
+                src="/content/image a.webp"
+                alt="Conference presentation"
+                loading="lazy"
+                className="w-full h-auto sepia-[0.15] hover:sepia-0 transition-all duration-500"
+              />
+              <div className="absolute inset-3 pointer-events-none border border-stone-200/50" />
+            </motion.div>
+          </div>
+
+          {/* Publications Subsection */}
+          <div>
+            <h3 className="text-xl font-display font-bold text-stone-900 mb-6">Publications</h3>
+            <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
+              <p>
+                Hazemali, David, Gostenčnik, Nina, & Borovič, M. (2025). Možnosti uporabe umetne inteligence v rodoslovju: metodološki premislek na primeru slovenske emigrantske družine Ložar/Lozar iz Elyja v Minnesoti. <em>Moderna Arhivistika</em> 8, no. 2, pp. 254–278. <a href="https://doi.org/10.54356/ma/2025/eetz1766" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.54356/ma/2025/eetz1766</a>
+              </p>
+              <p>
+                Hazemali, David, Herle, Dominik, Plejić, Žana, & Klemenčič, Matjaž (2025). Slovenska kapela v Washingtonu D. C. : zgodovina nastanka in njen kulturni, politični in verski pomen za Slovence in slovensko-ameriško skupnost. <em>Zgodovinski časopis : glasilo Zveze zgodovinskih društev Slovenije</em> 79, no 3/4, pp. 408–438. <a href="https://doi.org/10.56420/Zgodovinskicasopis.2025.3-4.07" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.56420/Zgodovinskicasopis.2025.3-4.07</a>
+              </p>
+              <p>
+                Herle, Dominik, Hazemali, David, Klemenčič, Matjaž, Valentan, Sebastijan (2025): Pregled zgodovine, poskus ukinitve in ponovno rojstvo slovensko-ameriške Župnije sv. Jožefa v Jolietu v zvezni državi Illinois = Review of the history, attempted closure, and rebirth of the Slovenian-American parish of St. Joseph in Joliet, Illinois. <em>Edinost in dialog : revija za ekumensko teologijo in medreligijski dialog</em> 80, no. 1, pp. 227–253. <a href="https://doi.org/10.34291/Edinost/80/01/Herle" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.34291/Edinost/80/01/Herle</a>
+              </p>
+              <p>
+                Hazemali, David, Osojnik, Janez, Onič, Tomaž, Todorović, Tadej, & Borovič, Mladen (2025): Učinkovitost uporabe generativne umetne inteligence pri preučevanju zgodovinskih dokumentov. In: Gostenčnik, Nina (Ed.). <em>Arhivi in digitalne tehnologije : Mednarodna konferenca Tehnični in vsebinski problemi klasičnega in elektronskega arhiviranja : 21. - 23. maj 2025, Radenci, Slovenija : knjiga povzetkov = Archives and digital technologies : International Conference Technical and Field Related Problems of Traditional and Electronic Archiving : May 21 - 23, 2025, Radenci, Slovenia.</em>
+              </p>
             </div>
           </div>
         </motion.section>
@@ -198,10 +197,10 @@ const FollowResearch: React.FC = () => {
           className="text-center py-16 border-t border-stone-200"
         >
           <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-4">
-            Join Our Research Network
+            Join the Research Network
           </h2>
           <p className="text-stone-600 font-light max-w-2xl mx-auto mb-8">
-            We welcome collaboration with researchers, archivists, and descendants of affected families. If you have documents, photographs, or family stories to share, please contact us.
+            The project includes elements of citizen science, inviting the public to help identify people, places, and sources, and to share documents, photographs, and family stories. Collaboration is also welcomed from researchers and archivists who work with relevant collections or topics. If you have materials related to the project's themes, please get in touch to discuss how they can be documented and preserved.
           </p>
           <a
             href="#/"
@@ -211,6 +210,14 @@ const FollowResearch: React.FC = () => {
           </a>
         </motion.section>
       </main>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={selectedImage !== null}
+        onClose={closeModal}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
     </div>
   );
 };

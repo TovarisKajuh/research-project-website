@@ -13,7 +13,7 @@ const logos = [
     url: 'https://www.um.si/o-univerzi/50-let-univerze-v-mariboru/'
   },
   {
-    src: '/images/aris-logo.png',
+    src: '/images/aris-logo.webp',
     alt: 'Slovenian Research Agency (ARIS)',
     url: 'https://www.aris-rs.si/sl/'
   },
