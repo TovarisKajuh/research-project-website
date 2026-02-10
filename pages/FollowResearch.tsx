@@ -203,10 +203,10 @@ const FollowResearch: React.FC = () => {
             The project includes elements of citizen science, inviting the public to help identify people, places, and sources, and to share documents, photographs, and family stories. Collaboration is also welcomed from researchers and archivists who work with relevant collections or topics. If you have materials related to the project's themes, please get in touch to discuss how they can be documented and preserved.
           </p>
           <a
-            href="#/"
+            href="mailto:david.hazemali@um.si"
             className="inline-flex items-center gap-3 px-8 py-4 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-stone-800 transition-colors"
           >
-            Contact the Team
+            Contact the PI
           </a>
         </motion.section>
       </main>
