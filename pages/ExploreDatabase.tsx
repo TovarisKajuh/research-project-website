@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar } from 'lucide-react';
+import BackToTop from '../components/BackToTop';
 
 interface DatabaseStats {
   documents: number;
@@ -323,6 +324,8 @@ const ExploreDatabase: React.FC = () => {
         </motion.section>
 
       </main>
+
+      <BackToTop />
     </div>
   );
 };

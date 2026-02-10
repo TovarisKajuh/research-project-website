@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, FileText, Users, Calendar } from 'lucide-react';
 import { ImageModal } from '../components/ImageModal';
+import BackToTop from '../components/BackToTop';
 
 const FollowResearch: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
@@ -218,6 +219,8 @@ const FollowResearch: React.FC = () => {
         imageSrc={selectedImage?.src || ''}
         imageAlt={selectedImage?.alt || ''}
       />
+
+      <BackToTop />
     </div>
   );
 };

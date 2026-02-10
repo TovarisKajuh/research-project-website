@@ -7,6 +7,7 @@ import Affiliations from './components/Affiliations';
 import NavigationCards from './components/NavigationCards';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
+import BackToTop from './components/BackToTop';
 import FollowResearch from './pages/FollowResearch';
 import DiscoverHistory from './pages/DiscoverHistory';
 import ExploreDatabase from './pages/ExploreDatabase';
@@ -63,6 +64,8 @@ const App: React.FC = () => {
           Select images featured in this collection have been digitally enhanced and upscaled using advanced software to preserve clarity and detail while maintaining historical authenticity.
         </p>
       </footer>
+
+      <BackToTop />
     </div>
   );
 };

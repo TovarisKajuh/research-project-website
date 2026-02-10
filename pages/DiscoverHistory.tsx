@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, History, MapPin, Ship, FileWarning, Home } from 'lucide-react';
 import { ImageModal } from '../components/ImageModal';
+import BackToTop from '../components/BackToTop';
 
 const DiscoverHistory: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
@@ -331,6 +332,8 @@ const DiscoverHistory: React.FC = () => {
         imageSrc={selectedImage?.src || ''}
         imageAlt={selectedImage?.alt || ''}
       />
+
+      <BackToTop />
     </div>
   );
 };
