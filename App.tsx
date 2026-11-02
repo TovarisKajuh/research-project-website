@@ -11,6 +11,7 @@ import BackToTop from './components/BackToTop';
 import FollowResearch from './pages/FollowResearch';
 import DiscoverHistory from './pages/DiscoverHistory';
 import ExploreDatabase from './pages/ExploreDatabase';
+import Razstava from './pages/Razstava';
 
 const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState(window.location.hash || '#/');
@@ -36,6 +37,10 @@ const App: React.FC = () => {
 
   if (currentRoute === '#/database') {
     return <ExploreDatabase />;
+  }
+
+  if (currentRoute === '#/razstava') {
+    return <Razstava />;
   }
 
   // Main page
