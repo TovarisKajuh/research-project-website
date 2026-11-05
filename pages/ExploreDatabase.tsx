@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar, Download, Map as MapIcon } from 'lucide-react';
 import BackToTop from '../components/BackToTop';
@@ -11,34 +11,44 @@ interface DatabaseStats {
   correspondence: number;
 }
 
+const downloadableFiles = [
+  {
+    title: 'Settlements of South Slavs from Austria-Hungary in the U.S. (c. 1880–1918)',
+    original: 'Naselbine južnih Slovanov iz Avstro-Ogrske v ZDA (okoli 1880–1918)',
+    description: 'Overview map of the United States with detailed insets for the Great Lakes and Midwest, and for Ohio, Pennsylvania and the Northeast. Print-quality version prepared for the exhibition Prilagoditev v stiski.',
+    author: 'David Hazemali, 2026',
+    href: '/content/zemljevid-naselbine-juznih-slovanov-1880-1918.pdf',
+    format: 'PDF',
+    size: '445 KB',
+    language: 'Slovenian',
+    preview: '/content/zemljevid-naselbine-1800.webp',
+    kind: 'map',
+  },
+  {
+    title: 'Exhibition Prilagoditev v stiski: Sources and Literature by Panel',
+    original: 'Razstava Prilagoditev v stiski: Viri in literatura po panojih',
+    description: 'Complete list of archival sources, newspapers, published sources and legal acts, visual materials and literature used for each of the eight exhibition panels, in Chicago author-date style.',
+    author: 'David Hazemali, 2026',
+    href: '/content/razstava-prilagoditev-v-stiski-viri-in-literatura.docx',
+    format: 'Word (DOCX)',
+    size: '47 KB',
+    language: 'Slovenian',
+    preview: null,
+    kind: 'document',
+  },
+];
+
 const ExploreDatabase: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [stats, setStats] = useState<DatabaseStats>({
-    documents: 0,
+  // Counts reflect the records actually published on this page.
+  const stats: DatabaseStats = {
+    documents: downloadableFiles.length,
     photographs: 0,
     individuals: 0,
     locations: 0,
     correspondence: 0,
-  });
-
-  useEffect(() => {
-    // Fetch database statistics from metadata file
-    fetch('/content/metadata.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setStats({
-          documents: data.documents || 0,
-          photographs: data.photographs || 0,
-          individuals: data.individuals || 0,
-          locations: data.locations || 0,
-          correspondence: data.correspondence || 0,
-        });
-      })
-      .catch((error) => {
-        console.error('Error fetching database statistics:', error);
-      });
-  }, []);
+  };
 
   // Calculate total records
   const totalRecords = stats.documents + stats.photographs + stats.individuals + stats.locations + stats.correspondence;
@@ -60,32 +70,6 @@ const ExploreDatabase: React.FC = () => {
     { type: 'photograph', title: 'Ship Manifest Detail', date: '1912', location: 'Ellis Island, NY' },
   ];
 
-  const downloadableFiles = [
-    {
-      title: 'Settlements of South Slavs from Austria-Hungary in the U.S. (c. 1880–1918)',
-      original: 'Naselbine južnih Slovanov iz Avstro-Ogrske v ZDA (okoli 1880–1918)',
-      description: 'Overview map of the United States with detailed insets for the Great Lakes and Midwest, and for Ohio, Pennsylvania and the Northeast. Print-quality version prepared for the exhibition Prilagoditev v stiski.',
-      author: 'David Hazemali, 2026',
-      href: '/content/zemljevid-naselbine-juznih-slovanov-1880-1918.pdf',
-      format: 'PDF',
-      size: '445 KB',
-      language: 'Slovenian',
-      preview: '/content/zemljevid-naselbine-1800.webp',
-      kind: 'map',
-    },
-    {
-      title: 'Exhibition Prilagoditev v stiski: Sources and Literature by Panel',
-      original: 'Razstava Prilagoditev v stiski: Viri in literatura po panojih',
-      description: 'Complete list of archival sources, newspapers, published sources and legal acts, visual materials and literature used for each of the eight exhibition panels, in Chicago author-date style.',
-      author: 'David Hazemali, 2026',
-      href: '/content/razstava-prilagoditev-v-stiski-viri-in-literatura.docx',
-      format: 'Word (DOCX)',
-      size: '47 KB',
-      language: 'Slovenian',
-      preview: null,
-      kind: 'document',
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-sepia-50">
