@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar } from 'lucide-react';
+import { ArrowLeft, Database, Search, Filter, FileText, Image, Users, MapPin, Calendar, Download, Map as MapIcon } from 'lucide-react';
 import BackToTop from '../components/BackToTop';
 
 interface DatabaseStats {
@@ -58,6 +58,33 @@ const ExploreDatabase: React.FC = () => {
     { type: 'correspondence', title: 'Family Letter Collection', date: '1917-1919', location: 'Various' },
     { type: 'document', title: 'Surveillance Report', date: '1918', location: 'Cleveland, OH' },
     { type: 'photograph', title: 'Ship Manifest Detail', date: '1912', location: 'Ellis Island, NY' },
+  ];
+
+  const downloadableFiles = [
+    {
+      title: 'Settlements of South Slavs from Austria-Hungary in the U.S. (c. 1880–1918)',
+      original: 'Naselbine južnih Slovanov iz Avstro-Ogrske v ZDA (okoli 1880–1918)',
+      description: 'Overview map of the United States with detailed insets for the Great Lakes and Midwest, and for Ohio, Pennsylvania and the Northeast. Print-quality version prepared for the exhibition Prilagoditev v stiski.',
+      author: 'David Hazemali, 2026',
+      href: '/content/zemljevid-naselbine-juznih-slovanov-1880-1918.pdf',
+      format: 'PDF',
+      size: '445 KB',
+      language: 'Slovenian',
+      preview: '/content/zemljevid-naselbine-1800.webp',
+      kind: 'map',
+    },
+    {
+      title: 'Exhibition Prilagoditev v stiski: Sources and Literature by Panel',
+      original: 'Razstava Prilagoditev v stiski: Viri in literatura po panojih',
+      description: 'Complete list of archival sources, newspapers, published sources and legal acts, visual materials and literature used for each of the eight exhibition panels, in Chicago author-date style.',
+      author: 'David Hazemali, 2026',
+      href: '/content/razstava-prilagoditev-v-stiski-viri-in-literatura.docx',
+      format: 'Word (DOCX)',
+      size: '47 KB',
+      language: 'Slovenian',
+      preview: null,
+      kind: 'document',
+    },
   ];
 
   return (
@@ -183,6 +210,69 @@ const ExploreDatabase: React.FC = () => {
               <span className="block text-3xl font-display font-black text-stone-900">{stats.locations.toLocaleString()}</span>
               <span className="text-xs uppercase tracking-widest text-stone-500">Locations</span>
             </div>
+          </div>
+        </motion.section>
+
+        {/* Downloadable Files */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-display font-bold text-stone-900 uppercase tracking-wide mb-3">
+            Downloadable Files
+          </h2>
+          <p className="text-stone-600 font-light leading-relaxed mb-8 max-w-3xl">
+            Maps, source lists and other research materials produced by the project, available for download.
+          </p>
+          <div className="space-y-6">
+            {downloadableFiles.map((file, index) => (
+              <motion.div
+                key={file.href}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white border border-stone-200 hover:border-stone-400 transition-colors flex flex-col md:flex-row"
+              >
+                <div className="md:w-72 shrink-0 bg-stone-100 border-b md:border-b-0 md:border-r border-stone-200 flex items-center justify-center p-4 min-h-[10rem]">
+                  {file.preview ? (
+                    <img src={file.preview} alt={file.title} loading="lazy" className="w-full h-auto shadow-sm" />
+                  ) : (
+                    <div className="text-center text-stone-400">
+                      <FileText className="w-14 h-14 mx-auto mb-3" strokeWidth={1.25} />
+                      <span className="text-[10px] uppercase tracking-widest font-bold">{file.format}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 p-6 md:p-8 flex flex-col">
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-stone-500 font-bold mb-3">
+                    {file.kind === 'map' ? <MapIcon className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                    {file.kind === 'map' ? 'Map' : 'Document'}
+                  </div>
+                  <h3 className="font-display font-bold text-stone-900 text-lg leading-snug">{file.title}</h3>
+                  <p className="text-sm text-stone-500 italic mt-1">{file.original}</p>
+                  <p className="text-stone-600 font-light leading-relaxed mt-4">{file.description}</p>
+                  <div className="flex flex-wrap items-end justify-between gap-4 mt-6 pt-6 border-t border-stone-100">
+                    <dl className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-stone-500">
+                      <div><dt className="inline uppercase tracking-widest">Format: </dt><dd className="inline text-stone-800">{file.format}</dd></div>
+                      <div><dt className="inline uppercase tracking-widest">Size: </dt><dd className="inline text-stone-800">{file.size}</dd></div>
+                      <div><dt className="inline uppercase tracking-widest">Language: </dt><dd className="inline text-stone-800">{file.language}</dd></div>
+                      <div><dt className="inline uppercase tracking-widest">Author: </dt><dd className="inline text-stone-800">{file.author}</dd></div>
+                    </dl>
+                    <a
+                      href={file.href}
+                      download
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-stone-900 text-white uppercase tracking-widest text-xs font-bold hover:bg-stone-800 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 
