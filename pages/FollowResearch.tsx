@@ -77,27 +77,38 @@ const FollowResearch: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Archival Research Photo */}
+        {/* Settlement Map */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 flex justify-center"
+          className="mb-20"
         >
           <motion.div
-            className="bg-white p-3 shadow-xl cursor-pointer max-w-2xl mx-auto relative"
-            style={{ rotate: -1.5 }}
-            whileHover={{ rotate: 0, scale: 1.02, y: -8 }}
-            onClick={() => openModal('/content/image b.webp', 'Archival research documentation')}
+            className="bg-white p-3 shadow-xl cursor-pointer relative"
+            whileHover={{ scale: 1.01, y: -6 }}
+            onClick={() => openModal('/content/zemljevid-naselbine.webp', 'Settlements of South Slavs from Austria-Hungary in the U.S. (c. 1880–1918)')}
           >
             <img
-              src="/content/image b.webp"
-              alt="Archival research documentation"
+              src="/content/zemljevid-naselbine-1800.webp"
+              alt="Settlements of South Slavs from Austria-Hungary in the U.S. (c. 1880–1918)"
               loading="lazy"
-              className="w-full h-auto sepia-[0.15] hover:sepia-0 transition-all duration-500"
+              className="w-full h-auto"
             />
             <div className="absolute inset-3 pointer-events-none border border-stone-200/50" />
           </motion.div>
+          <div className="flex flex-wrap items-center justify-between gap-3 mt-4">
+            <p className="text-xs text-stone-500 italic">
+              Settlements of South Slavs from Austria-Hungary in the U.S., c. 1880–1918. Map: David Hazemali, 2026. Click to enlarge.
+            </p>
+            <a
+              href="/content/zemljevid-naselbine-juznih-slovanov-1880-1918.pdf"
+              download
+              className="text-xs uppercase tracking-widest font-bold text-stone-700 hover:text-stone-900 underline underline-offset-4"
+            >
+              Download PDF
+            </a>
+          </div>
         </motion.div>
 
         {/* Timeline */}
@@ -174,6 +185,12 @@ const FollowResearch: React.FC = () => {
           <div>
             <h3 className="text-xl font-display font-bold text-stone-900 mb-6">Publications</h3>
             <div className="prose prose-lg text-stone-700 font-light leading-relaxed space-y-6">
+              <p>
+                Hazemali, David, & Klemenčič, Matjaž. (2026). Kontinuiteta in preobrazba slovenskega pastoralnega modela v župniji sv. Antona v Elyju v Minnesoti (1887–2022): »Slediti stopinjam častitljivega in nepozabnega monsinjorja Buha« = Continuity and transformation of the Slovenian pastoral model in St. Anthony's Parish, Ely, Minnesota (1887–2022): »Following in the footsteps of the venerable and unforgettable Monsignor Buh«. <em>Edinost in dialog</em> 81, no. 1, pp. 1–29. <a href="https://doi.org/10.34291/Edinost/81/01/Hazemali" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.34291/Edinost/81/01/Hazemali</a>
+              </p>
+              <p>
+                Hazemali, David, & Klemenčič, Matjaž. (2026). Slovenski program Voice of America v sedemdesetih letih med proračunskimi rezi, Kongresom in jezikovno vitalnostjo diaspore: »Ko je Glas Amerike utihnil v slovenščini«. <em>Slavia Centralis</em> 19, no. 1, pp. 250–272. <a href="https://doi.org/10.18690/scn.19.1.250-272.2026" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.18690/scn.19.1.250-272.2026</a>
+              </p>
               <p>
                 Hazemali, David, Gostenčnik, Nina, & Borovič, M. (2025). Možnosti uporabe umetne inteligence v rodoslovju: metodološki premislek na primeru slovenske emigrantske družine Ložar/Lozar iz Elyja v Minnesoti. <em>Moderna Arhivistika</em> 8, no. 2, pp. 254–278. <a href="https://doi.org/10.54356/ma/2025/eetz1766" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 underline">https://doi.org/10.54356/ma/2025/eetz1766</a>
               </p>
